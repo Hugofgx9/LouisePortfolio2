@@ -1,6 +1,11 @@
 <script>
+import OvalLink from '@/components/OvalLink.vue'
+
 export default {
 	name: 'NavBar',
+	components: {
+		OvalLink,
+	}
 }
 	
 </script>
@@ -8,17 +13,17 @@ export default {
 <template>
 	<nav>
 		<ul>
-			<li>
-				<router-link to='/'>Home</router-link>
+			<li class='first-column'>
+				<OvalLink text='Home' to='/'/>
 			</li>
-			<li>
-				<router-link to='/'>Works</router-link>
+			<li class='second-column'>
+				<OvalLink text='Works' to='/'/>
 			</li>
-			<li>
-				<router-link to='/'>About</router-link>
+			<li class='second-column'>
+				<OvalLink text='About' to='/'/>
 			</li>
-			<li>
-				<router-link to='/'>Contact</router-link>
+			<li class='second-column'>
+				<OvalLink text='Contact' to='/'/>
 			</li>
 		</ul>
 	</nav>
@@ -26,5 +31,28 @@ export default {
 </template>
 
 <style lang='scss' scoped>
+
+
+ul {
+	display: grid;
+	grid-template-columns: 1fr repeat(3, 140px);
+	grid-template-rows: auto;
+	padding-bottom: 24px;
+
+
+
+	li {
+		grid-row: 1;
+
+		// a {
+		// 	@include oval-link;
+		// }
+
+
+		&.second-column {
+			justify-self: end;
+		}
+	}
+}
 	
 </style>
