@@ -14,16 +14,16 @@ export default {
 	<nav>
 		<ul>
 			<li class='first-column'>
-				<OvalLink text='Home' to='/'/>
+				<OvalLink text='Home' to='/home'/>
 			</li>
 			<li class='second-column'>
-				<OvalLink text='Works' to='/'/>
+				<OvalLink text='Works' to='/works'/>
 			</li>
 			<li class='second-column'>
-				<OvalLink text='About' to='/'/>
+				<OvalLink text='About' to='/about'/>
 			</li>
 			<li class='second-column'>
-				<OvalLink text='Contact' to='/'/>
+				<OvalLink text='Contact' to='/contact'/>
 			</li>
 		</ul>
 	</nav>

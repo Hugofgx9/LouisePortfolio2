@@ -5,12 +5,20 @@ Vue.use(VueRouter)
 
 const routes = [
 	{
-		path: '/',
+		path: '/home',
 		component: require('@/views/Home.vue').default
 	},
 	{
+		path: '/works',
+		component: require('@/views/Works.vue').default
+	},
+	{
+		path: '/about',
+		component: require('@/views/About.vue').default
+	},
+	{
 		path: '/*',
-		redirect: '/'
+		redirect: '/home'
 	}
 ]
 

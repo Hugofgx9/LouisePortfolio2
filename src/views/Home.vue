@@ -21,14 +21,13 @@ export default {
 <style lang='scss' scoped>
 
 #home{
-	font-size: 4.5vw;
+	font-size: $big-font-size;
 	display: grid;
 	height: 100%;
-	grid-template-rows: 1.7fr 2fr;
+	grid-template-rows: 1.1fr 1fr;
 	align-items: center;
 
 	.paragraph-1 {
-		padding-bottom: 50px;
 	}
 
 	.paragraph-2 {
