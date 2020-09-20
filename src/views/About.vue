@@ -63,11 +63,12 @@ export default {
 #about{
 	display: grid;
 	height: 100%;
-	grid-template-columns: 2fr 1fr;
+	grid-template-columns: 1fr 405px;
 	// align-items: center;
 	
 	.paragraph-1 {
 		font-size: $big-font-size;
+		padding-right: 7vw;
 	}
 
 	.cv-container {
@@ -94,6 +95,7 @@ export default {
 				&.studies {
 					span:nth-of-type(2) {
 						grid-column: 2/4;
+						padding-left: 40px;
 					}
 				}
 			}
@@ -115,6 +117,29 @@ export default {
 
 			&:not(:first-of-type) {
 				margin-top: 24px;
+			}
+		}
+	}
+	@media (max-width: 933px) {
+		grid-template-rows: auto auto;
+		grid-template-columns: 1fr;
+
+	}
+	@media (max-width: 768px) {
+		.paragraph-1{
+			font-size: $big-font-mobile;
+			padding: 0;
+		}
+
+		.cv-container {
+			margin-top: 10vw;
+
+			h2 {
+				font-size: $big-font-mobile;
+			}
+
+			li.cv-section{
+				font-size: 3.5vw;
 			}
 		}
 	}

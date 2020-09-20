@@ -17,6 +17,10 @@ const routes = [
 		component: require('@/views/About.vue').default
 	},
 	{
+		path: '/contact',
+		component: require('@/views/Contact.vue').default
+	},
+	{
 		path: '/*',
 		redirect: '/home'
 	}
