@@ -1,6 +1,6 @@
 <script>
 export default {
-	name: 'Contact',
+	name: 'ContactWave1s',
 	mounted: function () {
 		this.textWave();
 		
@@ -35,7 +35,6 @@ export default {
 				this.el = el;
 				this.index = index;
 			}
-
 
 
 			function init () {
@@ -139,7 +138,7 @@ export default {
 			}
 
 			init();
-			setInterval( update , 20);
+			setInterval( update , 2);
 		}
 	}
 }
