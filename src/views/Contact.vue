@@ -2,7 +2,8 @@
 export default {
 	name: 'Contact',
 	mounted: function () {
-		this.getEachCharaFromText();
+		this.textWave();
+		
 
 	},
 	methods: {
@@ -13,9 +14,103 @@ export default {
 			for (let i = 1; i < text.length; i++) {
 				if (text.charAt(i) != ' ') {
 					textArray.push(text.charAt(i));
-				}
+				} //delete space from the array
 			}
 			console.log(textArray);
+		},
+
+		textWave: function () {
+			let elContainer = document.querySelector('#contact .paragraph-1');
+			let timeIndex = 0;
+			let amplitude = 0.2;
+			let letters;
+			let spanArray = [], tagsArray = [];
+
+			function Letter (el, initWidth) {
+				this.el = el;
+				this.initWidth = initWidth;
+			}
+
+			function Tag (el, index) {
+				this.el = el;
+				this.index = index;
+			}
+
+
+
+			function init () {
+				let text = elContainer.textContent;
+				let textWithTags = elContainer.innerHTML;
+				letters = text.split('');
+				elContainer.innerText='';
+
+
+				function selectAllTags (container) {
+					for(let i=0; i<container.length; i++) {
+						if (container[i] === "<") {
+							for(let j=i; j<container.length; j++) {
+								if (container[j] === ">") {
+									let tag = container.substring(i, j+1);
+									tagsArray.push(new Tag(tag, i));
+									break;
+								}
+							}
+						}
+					}
+					console.log(tagsArray);
+				}
+
+				function replaceTextBySpan () {
+					let tagsLength = 0;
+					let htmlString = '';
+
+					letters.forEach(function (letter, i) {
+						// tagsArray.forEach(function (tag) {
+						// 	if (i + tagsLength == tag.index) {
+						// 		tagsLength += tag.el.length;
+						// 		console.log(tag.el);
+						// 		elContainer.innerHTML += tag.el;
+						// 		//elContainer.appendChild(document.createRange().createContextualFragment(tag.el));
+						// 	}
+						// });
+
+						let span = document.createElement("span");
+						span.innerText = letter;
+						console.log(span);
+						span.style.display = 'inline-block';
+						span.style.position = 'relative';
+						let wave = (Math.sin(i * amplitude)) / 4 + 0.8;
+						span.style.transform = "scaleX(" + wave + ")"; //scale dont change dim of the box
+						elContainer.appendChild(span);
+						let widthBeforeTransform;
+						if (letter == ' ') {
+							widthBeforeTransform = 15;
+						}
+						else {
+							widthBeforeTransform = getComputedStyle(span).width;
+							widthBeforeTransform = parseFloat(widthBeforeTransform.slice(0, -2));
+						}
+						let newWidth = widthBeforeTransform * wave;
+						span.style.width = newWidth + "px";
+						spanArray.push(new Letter(span, widthBeforeTransform));
+					});
+				}
+				selectAllTags (textWithTags);
+				replaceTextBySpan ();
+			}
+
+			function update () {
+				timeIndex += 0.2;
+				spanArray.forEach(function (letter, i) {
+					let wave = (Math.sin(i * amplitude + (timeIndex * 0.1))) / 4 + 0.8; 
+					letter.el.style.transform = "scaleX(" + wave + ")"; //scale dont change dim of the box
+					let newWidth = letter.initWidth * wave;
+					letter.el.style.width = newWidth + "px";
+				});
+			}
+
+			init();
+			setInterval( update , 10);
 		}
 	}
 }
