@@ -1,4 +1,6 @@
 <script>
+import gsap from 'gsap';
+
 export default {
 	name: 'Contact',
 	mounted: function () {
@@ -8,7 +10,7 @@ export default {
 	},
 	methods: {
 		getEachCharaFromText: function () {
-			let el = document.querySelector('#contact p');
+			let el = document.querySelector('#contact .paragraph-1');
 			let text = el.textContent;
 			let textArray = [];
 			for (let i = 1; i < text.length; i++) {
@@ -34,6 +36,11 @@ export default {
 			function Tag (el, index) {
 				this.el = el;
 				this.index = index;
+			}
+
+			function pxtovw (px) {
+				let vw = px / document.documentElement.clientWidth *100;
+				return vw;
 			}
 
 
@@ -69,38 +76,11 @@ export default {
 							if (i + tagsLength == tag.index) {
 								tagsLength += tag.el.length;
 								htmlString += tag.el;
-								//elContainer.appendChild(document.createRange().createContextualFragment(tag.el));
 							}
 						});
 
 						let span = "<span class='wave-letter'>" + letter + "</span>";
-						// let span = document.createElement("span");
-						//span.innerText = letter;
-						// span.style.display = 'inline-block';
-						// span.style.position = 'relative';
 						htmlString += span;
-
-
-
-
-						// let span = document.createElement("span");
-						// span.innerText = letter;
-						// span.style.display = 'inline-block';
-						// span.style.position = 'relative';
-						// let wave = (Math.sin(i * amplitude)) / 4 + 0.8;
-						// span.style.transform = "scaleX(" + wave + ")"; //scale dont change dim of the box
-						// elContainer.appendChild(span);
-						// let widthBeforeTransform;
-						// if (letter == ' ') {
-						// 	widthBeforeTransform = 15;
-						// }
-						// else {
-						// 	widthBeforeTransform = getComputedStyle(span).width;
-						// 	widthBeforeTransform = parseFloat(widthBeforeTransform.slice(0, -2));
-						// }
-						// let newWidth = widthBeforeTransform * wave;
-						// span.style.width = newWidth + "px";
-						// spanArray.push(new Letter(span, widthBeforeTransform));
 					});
 					elContainer.appendChild(document.createRange().createContextualFragment(htmlString));
 				}
@@ -117,7 +97,8 @@ export default {
 							width = getComputedStyle(span).width;
 							width = parseFloat(width.slice(0, -2));
 						}
-						span.style.width = width +"px";
+						width = pxtovw (width);
+						span.style.width = width +"vw";
 						span.style.transform = "scaleX(1)";
 						spanArray.push(new Letter(span, width));
 					})
@@ -125,21 +106,22 @@ export default {
 				selectAllTags (textWithTags);
 				replaceTextBySpan ();
 				getSpanAndWidth ();
-
 			}
 
 			function update () {
-				timeIndex += 0.2;
+				let timeIndex = 0;
+
 				spanArray.forEach(function (letter, i) {
-					let wave = (Math.sin(i * amplitude + (timeIndex * 0.1))) / 4 + 0.8; 
-					letter.el.style.transform = "scaleX(" + wave + ")"; //scale dont change dim of the box
-					let newWidth = letter.initWidth * wave;
-					letter.el.style.width = newWidth + "px";
+					timeIndex -= 0.1;
+					gsap.fromTo(letter.el, 2,
+						{scaleX: 1.3, width: letter.initWidth * 1.3 +'vw'},
+						{scaleX: 0.4, width: letter.initWidth * 0.4 +'vw', ease: 'sine.easeInOut', repeat: -1, yoyo: true, 
+							delay: timeIndex});
 				});
 			}
 
 			init();
-			setInterval( update , 20);
+			update();
 		}
 	}
 }
