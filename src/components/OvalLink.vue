@@ -13,16 +13,37 @@ export default {
 		},
 	},
 
-  // data () {
-  //   return { 
-  //   	windowWidth: 1 }
-  // },
+	data () {
+		return {
+			classScreen: 'lg'
+		}
+	},
+
+	methods: {
+		sortWidth: function () {
+			if ( this.$store.state.windowWidth > 700) {
+				this.classScreen = 'lg';
+			} else {
+				this.classScreen = 'sm';
+			}
+		}
+	},
+	watch: {
+		'$store.state.windowWidth': function() {
+			this.sortWidth();
+		},
+	}
+
+	// data () {
+	//   return { 
+	//   	windowWidth: 1 }
+	// },
 }
 
 </script>
 
 <template>
-	<router-link :to='to'>
+	<router-link :class="classScreen" :to='to'>
 		{{ text }}
 	</router-link>
 </template>
@@ -44,6 +65,10 @@ a {
 		background-color: $primary-color;
 		color: white;
 
+	}
+
+	&.sm {
+		width: 20vw;
 	}
 }
 </style>
