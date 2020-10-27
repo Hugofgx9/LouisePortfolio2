@@ -5,6 +5,11 @@ export default {
 	name: 'NavBar',
 	components: {
 		OvalLink,
+	}, 
+	computed: {
+		windowWidth: function () {
+			return this.$store.state.windowWidth;
+		}
 	}
 }
 	

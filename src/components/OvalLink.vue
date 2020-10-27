@@ -1,6 +1,7 @@
 <script>
 export default {
 	name: 'OvalLink',
+
 	props: {
 		text: {
 			type: String,
@@ -12,7 +13,12 @@ export default {
 		},
 	},
 
+  // data () {
+  //   return { 
+  //   	windowWidth: 1 }
+  // },
 }
+
 </script>
 
 <template>

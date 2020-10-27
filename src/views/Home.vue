@@ -1,11 +1,11 @@
 <script>
 export default {
-  name: 'Home',
+	name: 'Home',
 }
 </script>
 
 <template>
-  <div id='home'>
+	<div id='home'>
 		<p class='paragraph-1'>Hi, <br/>
 			My name is <span class='italic-text'> Louise Peredes Fantozzi </span>
 		</p>
@@ -15,7 +15,7 @@ export default {
 			speciality <span class='italic-text'> Advertising </span> and <br/>
 			I'm passionate about <span class='italic-text'> Graphic Design </span> <br/>
 		</p>
-  </div>
+	</div>
 </template>
 
 <style lang='scss' scoped>
