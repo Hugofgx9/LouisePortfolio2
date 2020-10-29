@@ -1,51 +1,14 @@
 <script>
+import infiniteScroll from '../myClass/infiniteScroll.js';
 
 export default {
 	name: 'InfiniteScroll',
 
 	mounted: function () {
-		this.scrollPosition();
+		const myScroll = new infiniteScroll('#infinit-scroll-box', 'ul');
 	},
 
 	methods: {
-		scrollPosition: function () {
-
-			let scrollBox = document.getElementById('infinit-scroll-box');
-			let ul = scrollBox.querySelector('ul');
-			let li = scrollBox.querySelectorAll('li');
-			let contentHeight, scrollBoxHeight;
-			//console.log(li[0].offsetHeight);
-
-			let clone = ul.cloneNode(true);
-			clone.classList.add('copy');
-			//div.innerHTML = ul;
-			scrollBox.appendChild(clone);
-			clone = clone.cloneNode(true);
-			scrollBox.appendChild(clone);
-
-
-
-			scrollBox.addEventListener('scroll', () => {
-
-				if (typeof contentHeight == 'undefined') {
-					contentHeight = ul.offsetHeight;
-					scrollBoxHeight = scrollBox.offsetHeight;
-
-					console.log((contentHeight / scrollBoxHeight));
-					console.log(contentHeight);
-					console.log(scrollBoxHeight);
-				}
-
-				if (scrollBox.scrollTop >=  (contentHeight + contentHeight/4) ) {
-					scrollBox.scrollTop =  (scrollBox.scrollTop - (contentHeight));
-				} 
-				else if ( scrollBox.scrollTop <  contentHeight/4 ) {
-					scrollBox.scrollTop = scrollBox.scrollTop + contentHeight;
-
-				}
-
-			});
-		},
 
 	},
 
