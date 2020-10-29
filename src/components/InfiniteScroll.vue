@@ -43,9 +43,9 @@ export default {
 		font-size: 40px;
 	}
 
-	&::-webkit-scrollbar {
-    display: none;
-	}
+	// &::-webkit-scrollbar {
+ //    display: none;
+	// }
 }
 
 	
