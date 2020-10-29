@@ -13,25 +13,35 @@ export default {
 			let scrollBox = document.getElementById('infinit-scroll-box');
 			let ul = scrollBox.querySelector('ul');
 			let li = scrollBox.querySelectorAll('li');
-			let contentHeight, containerHeight;
+			let contentHeight, scrollBoxHeight;
 			//console.log(li[0].offsetHeight);
 
 			let clone = ul.cloneNode(true);
 			clone.classList.add('copy');
 			//div.innerHTML = ul;
 			scrollBox.appendChild(clone);
+			clone = clone.cloneNode(true);
+			scrollBox.appendChild(clone);
+
 
 
 			scrollBox.addEventListener('scroll', () => {
 
 				if (typeof contentHeight == 'undefined') {
 					contentHeight = ul.offsetHeight;
-					containerHeight = scrollBox.offsetHeight;
+					scrollBoxHeight = scrollBox.offsetHeight;
+
+					console.log((contentHeight / scrollBoxHeight));
+					console.log(contentHeight);
+					console.log(scrollBoxHeight);
 				}
 
-				console.log(scrollBox.scrollTop)
-				if (scrollBox.scrollTop >=  (contentHeight) ) {
-					scrollBox.scrollTop = 0 + (scrollBox.scrollTop - contentHeight);
+				if (scrollBox.scrollTop >=  (contentHeight + contentHeight/4) ) {
+					scrollBox.scrollTop =  (scrollBox.scrollTop - (contentHeight));
+				} 
+				else if ( scrollBox.scrollTop <  contentHeight/4 ) {
+					scrollBox.scrollTop = scrollBox.scrollTop + contentHeight;
+
 				}
 
 			});
@@ -63,7 +73,7 @@ export default {
 <style lang='scss' scoped>
 
 #infinit-scroll-box {
-	height: 100px;
+	height: 200px;
 	overflow: scroll;
 
 	li{

@@ -12,7 +12,7 @@ export default {
 
 <template>
 	<div>
-		<div id='works'>
+<!-- 		<div id='works'>
 			<p class='paragraph-1'>
 				With my <span class='italic-text'> studies, </span> I work a lot in <span class='italic-text'> groups </span><br/> 
 				around briefs, together we imagine <br/> 
@@ -25,7 +25,7 @@ export default {
 				This allowed me to <span class='italic-text'> discover graphic design </span> <br/> 
 				and <span class='italic-text'> complete my schooling </span> <br/> 
 			</p>
-		</div>
+		</div> -->
 		<div>
 			<InfiniteScroll/>
 		</div>
