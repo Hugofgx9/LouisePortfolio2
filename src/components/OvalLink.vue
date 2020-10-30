@@ -61,10 +61,9 @@ a {
 	border-radius: 50%;
 	transition: all .1s ease;
 
-	&:hover {
+	&:hover, &.router-link-active {
 		background-color: $primary-color;
 		color: white;
-
 	}
 
 	&.sm {

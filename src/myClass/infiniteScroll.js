@@ -4,7 +4,7 @@ export default class infiniteScroll {
 		this.container = document.querySelector(container);
 		this.content = this.container.querySelector(content);
 
-		setTimeout( function() {this.init()}.bind(this), 0);
+		setTimeout( function() {this.init()}.bind(this), 10);
 	}
 
 	init() {
@@ -20,17 +20,15 @@ export default class infiniteScroll {
 
 		this.container.scrollTop = this.contentHeight;
 
+		console.log(this.contentHeight);
+
 		this.onScroll();
 
 	}
 
 	onScroll() {
-
 		this.container.addEventListener('scroll', () => {
-
-
 			this.scrollTop = this.container.scrollTop;
-
 			if ( this.scrollTop >=  (this.contentHeight + this.contentHeight/ this.numberOfItem)) {
 				this.container.scrollTop =  (this.scrollTop - (this.contentHeight));
 			} 
