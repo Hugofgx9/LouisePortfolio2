@@ -3,22 +3,26 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
+
 const routes = [
 	{
 		path: '/home',
-		component: require('@/views/Home.vue').default
+		components: {
+			default: () => import('@/views/desktopViews/Home.vue'),
+			mobile: () => import('@/views/desktopViews/Home.vue'),
+		},
 	},
 	{
 		path: '/works',
-		component: require('@/views/Works.vue').default
+		component: require('@/views/desktopViews/Works.vue').default
 	},
 	{
 		path: '/about',
-		component: require('@/views/About.vue').default
+		component: require('@/views/desktopViews/About.vue').default
 	},
 	{
 		path: '/contact',
-		component: require('@/views/Contact.vue').default
+		component: require('@/views/desktopViews/Contact.vue').default
 	},
 	{
 		path: '/*',

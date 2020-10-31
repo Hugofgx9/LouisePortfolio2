@@ -17,6 +17,11 @@ export default {
 			<NavBar />
 			<router-view/>
 		</mq-slot>
+
+		<mq-slot mq="lg">
+			<NavBar />
+			<router-view/>
+		</mq-slot>
 	</div>
 </template>
 

@@ -1,6 +1,6 @@
 <script>
 export default {
-	name: 'ContactWave1s',
+	name: 'Contact',
 	mounted: function () {
 		this.textWave();
 		
