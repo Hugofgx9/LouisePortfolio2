@@ -9,7 +9,7 @@ const routes = [
 		path: '/home',
 		components: {
 			default: () => import('@/views/desktopViews/Home.vue'),
-			mobile: () => import('@/views/desktopViews/Home.vue'),
+			mobile: () => import('@/views/mobileViews/MobileHome.vue'),
 		},
 	},
 	{

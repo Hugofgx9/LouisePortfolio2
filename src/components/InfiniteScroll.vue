@@ -56,18 +56,15 @@ export default {
 
 	li{
 		padding-bottom: 0.8vw;
-
 		.italic-text {
 			color: black;
 		}
 
 		a{
-
 			&:hover {
 				color: $second-color;
 			}
 		}
-
 	}
 
 	&::-webkit-scrollbar {

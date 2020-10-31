@@ -1,11 +1,13 @@
 <script>
 import mqSlot from '@/components/mq-slot.vue';
 import NavBar from '@/components/NavBar.vue';
+import MobileNavBar from '@/components/MobileNavBar.vue';
 
 export default {
 	components: {
 		NavBar,
 		mqSlot,
+		MobileNavBar,
 	},
 }
 
@@ -14,12 +16,12 @@ export default {
 <template>
 	<div id="app">
 		<mq-slot mq="lg">
-			<NavBar />
+			<nav-bar />
 			<router-view/>
 		</mq-slot>
 		
 		<mq-slot mq="sm">
-			<NavBar />
+			<mobile-nav-bar />
 			<router-view name="mobile"/>
 		</mq-slot>
 
