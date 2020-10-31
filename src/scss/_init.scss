@@ -1,6 +1,6 @@
 #app {
-  padding: 24px;
-  min-height: calc(100vh - 48px);
+  padding: $global-padding;
+  min-height: calc(100vh - $global-padding);
   font-family: "GGX88 W01 Light";
   font-size: 16px;
   font-style: normal;

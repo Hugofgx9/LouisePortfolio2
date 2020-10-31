@@ -11,17 +11,13 @@ export default class infiniteScroll {
 
 		//clone
 		this.cloneElement(this.container, this.content);
-
-		//get height
-		this.containerHeight = this.container.offsetHeight;
-		this.contentHeight = this.content.offsetHeight;
-
 		this.numberOfItem = this.content.childElementCount;
+
+		this.getHeight();
 
 		this.container.scrollTop = this.contentHeight;
 
-		console.log(this.contentHeight);
-
+		this.onResize();
 		this.onScroll();
 
 	}
@@ -48,5 +44,16 @@ export default class infiniteScroll {
 		this.clone.classList.add('infinite-copy');
 		container.append(this.clone);
 
+	}
+
+	getHeight() {
+		this.containerHeight = this.container.offsetHeight;
+		this.contentHeight = this.content.offsetHeight;
+	}
+
+	onResize() {
+		window.addEventListener('resize', () => {
+			this.getHeight();
+		})
 	}
 }

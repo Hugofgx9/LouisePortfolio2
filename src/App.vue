@@ -13,15 +13,16 @@ export default {
 
 <template>
 	<div id="app">
-		<mq-slot mq="sm">
-			<NavBar />
-			<router-view/>
-		</mq-slot>
-
 		<mq-slot mq="lg">
 			<NavBar />
 			<router-view/>
 		</mq-slot>
+		
+		<mq-slot mq="sm">
+			<NavBar />
+			<router-view name="mobile"/>
+		</mq-slot>
+
 	</div>
 </template>
 
