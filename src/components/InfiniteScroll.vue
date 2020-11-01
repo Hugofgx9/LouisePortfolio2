@@ -51,18 +51,19 @@ export default {
 <style lang='scss' scoped>
 
 #infinit-scroll-box {
-	height: 400px;
+	height: 100%;
 	overflow: scroll;
 
 	li{
-		font-size: 40px;
-
+		padding-bottom: 0.8vw;
 		.italic-text {
 			color: black;
 		}
 
-		a:hover{
-			color: $second-color;
+		a{
+			&:hover {
+				color: $second-color;
+			}
 		}
 	}
 

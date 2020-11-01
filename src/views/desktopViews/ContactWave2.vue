@@ -43,8 +43,6 @@ export default {
 				return vw;
 			}
 
-
-
 			function init () {
 				let text = elContainer.textContent;
 				let textWithTags = elContainer.innerHTML;
