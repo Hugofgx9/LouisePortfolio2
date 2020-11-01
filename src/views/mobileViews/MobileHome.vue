@@ -1,6 +1,10 @@
 <script>
+import OvalLink from '@/components/OvalLink.vue';
 export default {
 	name: 'MobileHome',
+	components: {
+		OvalLink,
+	}
 }
 </script>
 
@@ -10,21 +14,25 @@ export default {
 			My name is <span class='italic-text'> Louise Peredes Fantozzi </span>
 		</p>
 		<p class='paragraph-2'>
-			I'm <span class='italic-text'> French </span> student <br/> 
-			in the <span class='italic-text'> DUT Information Communication </span> <br/>
+			I'm <span class='italic-text'> French </span> student in the <br/> 
+			<span class='italic-text'> DUT Information Communication </span> <br/>
 			speciality <span class='italic-text'> Advertising </span> and <br/>
-			I'm passionate about <span class='italic-text'> Graphic Design </span> <br/>
+			I'm passionate <br/>
+			about <span class='italic-text'> Graphic Design </span> <br/>
 		</p>
+		<div>
+			<oval-link text="View my work" to="/"/>
+		</div>
 	</div>
 </template>
 
 <style lang='scss' scoped>
 
 #home{
-	font-size: $big-font-size;
+	font-size: $big-font-mobile;
 	display: grid;
-	height: 100%;
-	grid-template-rows: 1.1fr 1fr;
+	height: 80vh;
+	grid-template-rows: 1fr 1fr 1fr;
 	align-items: center;
 
 	.paragraph-1 {
@@ -32,6 +40,10 @@ export default {
 
 	.paragraph-2 {
 		text-align: right;
+		align-self: start;
+	}
+
+	div{
 	}
 }
 	

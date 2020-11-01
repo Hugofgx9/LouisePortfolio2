@@ -34,7 +34,7 @@ export default {
 <style lang='scss' scoped>
 
 #modal-menu {
-	position: absolute;
+	position: fixed;
 	left: 0px;
 	top: 0px;
 	width: 100vw;

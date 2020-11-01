@@ -39,24 +39,43 @@ export default {
 
 <style lang='scss' scoped>
 
-button{
-	position: absolute;
-	left: -95px;
-	height: 45px;
+nav{
+	height: 9vw;
+
+	button{
+	position: fixed;
+	left: -20vw;
+	height: 9vw;
+	width: 40vw;
+	background-color: white;
 	overflow: hidden;
 	border: 1px solid $primary-color;
-	width: 190px;
 	text-align: right;
-	// display: flex;
-	// font-style: italic;
-	// justify-content: center;
-	// align-items: center;
 	border-radius: 50%;
 	transition: all .1s ease;
 	z-index: 10;
 
-	span{
-		padding-right: 50px;
+		span{
+			padding-right: 9vw;
+			font-size: 3.5vw;
+		}
+	}
+
+	@media only screen and (max-width: 510px) {
+		height: 50px;
+
+		button{
+			color: red;
+			left: -90px;
+			height: 50px;
+			width: 195px;
+
+			span{
+				padding-right: 45px;
+				font-size: 18px;
+				text-color: red;
+			}
+		}
 	}
 }
 

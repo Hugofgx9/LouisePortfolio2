@@ -15,12 +15,12 @@ export default {
 
 <template>
 	<div id="app">
-		<mq-slot mq="lg">
+		<mq-slot mq="lg" class="desktop">
 			<nav-bar />
 			<router-view/>
 		</mq-slot>
 		
-		<mq-slot mq="sm">
+		<mq-slot mq="sm" class="mobile">
 			<mobile-nav-bar />
 			<router-view name="mobile"/>
 		</mq-slot>
