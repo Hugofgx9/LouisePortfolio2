@@ -46,6 +46,7 @@ export default {
 	align-items: center;
 
 	li{
+		margin-bottom: 4vh;
 	}
 }
 	

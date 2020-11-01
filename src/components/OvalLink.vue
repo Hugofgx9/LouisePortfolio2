@@ -11,6 +11,16 @@ export default {
 			type: String,
 			required: true,
 		},
+		width: {
+			type: String,
+		},
+		height: {
+			type: String,
+		},
+		color: {
+			type: String,
+			default: 'white',
+		},
 	},
 
 	data () {
@@ -32,7 +42,18 @@ export default {
 		'$store.state.windowWidth': function() {
 			this.sortWidth();
 		},
-	}
+	}, 
+	computed: {
+		style: function () {
+			return {
+				'width': this.width,
+				'height': this.height,
+			}
+		},
+		colorClass: function () {
+			return this.color;
+		}
+	},
 
 	// data () {
 	//   return { 
@@ -43,7 +64,7 @@ export default {
 </script>
 
 <template>
-	<router-link :class="classScreen" :to='to'>
+	<router-link :class="[classScreen, colorClass]" :to='to' :style="style">
 		{{ text }}
 	</router-link>
 </template>
@@ -52,7 +73,7 @@ export default {
 a {
 	height: 30px;
 	overflow: hidden;
-	border: 1px solid $primary-color;
+	border: 1px solid;
 	width: 120px;
 	display: flex;
 	font-style: italic;
@@ -61,10 +82,28 @@ a {
 	border-radius: 50%;
 	transition: all .1s ease;
 
-	&:hover, &.router-link-active {
+	&.white {
+		border-color: $primary-color;
+		background-color: white;
+		color: black;
+
+		&:hover, &.router-link-active {
+			background-color: $primary-color;
+			color: white;
+		}
+	}
+
+	&.black {
+		border-color: $primary-color;
 		background-color: $primary-color;
 		color: white;
+
+		&:hover, &.router-link-active {
+			background-color: white;
+			color: $primary-color;
+		}
 	}
+
 
 	&.sm {
 		width: 20vw;
