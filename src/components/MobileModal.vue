@@ -6,6 +6,20 @@ export default {
 	components: {
 		OvalLink,
 	},
+	data () {
+		return {
+			ovalStyle: {
+				width: '30vh',
+				height: '7vh',
+			},
+			links: [
+				{ lib: 'Home', to: '/home', style: {width: '30vh',height: '7vh'}},
+				{ lib: 'Works', to: '/works', style: {width: '30vh',height: '7vh'}},
+				{ lib: 'About', to: '/about', style: {width: '30vh',height: '7vh'}},
+				{ lib: 'Contact', to: '/contact', style: {width: '30vh',height: '7vh'}},
+			],
+		}
+	},
 }
 	
 </script>
@@ -13,17 +27,8 @@ export default {
 <template>
 	<div id="modal-menu">
 		<ul>
-			<li>
-				<oval-link text='Home' to='/home'/>
-			</li>	
-			<li>
-				<oval-link text='Works' to='/works'/>
-			</li>	
-			<li>
-				<oval-link text='About' to='/about'/>
-			</li>	
-			<li>
-				<oval-link text='Contact' to='/contact'/>
+			<li v-for="link in links" :key="link.lib">
+				<oval-link :text="link.lib" :to="link.to" :myStyle="link.style"/>
 			</li>	
 		</ul>
 		
@@ -46,6 +51,7 @@ export default {
 	align-items: center;
 
 	li{
+		margin-bottom: 4vh;
 	}
 }
 	

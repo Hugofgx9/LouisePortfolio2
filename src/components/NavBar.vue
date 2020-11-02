@@ -49,13 +49,12 @@ ul {
 	li {
 		grid-row: 1;
 
-		// a {
-		// 	@include oval-link;
-		// }
-
-
 		&.second-column {
 			justify-self: end;
+		}
+
+		a.router-link-active {
+			display: none;
 		}
 	}
 }
