@@ -40,20 +40,20 @@ export default {
 				this.condition = this.breakpoints[index - 1].value < this.windowWidth
 													&& this.windowWidth < this.breakpoints[index].value;
 			}
-
 		}
-
 	},
 }
 </script>
 
 <template>
-	<div v-if="this.condition">
+	<div class="app-container" v-if="this.condition">
 		<slot></slot>
 	</div>
 	
 </template>
 
 <style lang="scss">
+	.app-container {
+	}
 	
 </style>

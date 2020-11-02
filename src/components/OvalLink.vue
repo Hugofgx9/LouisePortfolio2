@@ -11,15 +11,12 @@ export default {
 			type: String,
 			required: true,
 		},
-		width: {
-			type: String,
-		},
-		height: {
-			type: String,
-		},
 		color: {
 			type: String,
 			default: 'white',
+		},
+		myStyle: {
+			type: Object,
 		},
 	},
 
@@ -45,10 +42,7 @@ export default {
 	}, 
 	computed: {
 		style: function () {
-			return {
-				'width': this.width,
-				'height': this.height,
-			}
+			return this.myStyle;
 		},
 		colorClass: function () {
 			return this.color;
@@ -103,7 +97,6 @@ a {
 			color: $primary-color;
 		}
 	}
-
 
 	&.sm {
 		width: 20vw;

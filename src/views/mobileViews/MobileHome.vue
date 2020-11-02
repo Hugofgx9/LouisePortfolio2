@@ -4,6 +4,14 @@ export default {
 	name: 'MobileHome',
 	components: {
 		OvalLink,
+	},
+	data() {
+		return {
+			ovalStyle: {
+				width: 'max(40vw, 180px)', 
+				height: 'max(10vw, 50px)',
+			}
+		}
 	}
 }
 </script>
@@ -20,9 +28,10 @@ export default {
 			I'm passionate <br/>
 			about <span class='italic-text'> Graphic Design </span> <br/>
 		</p>
-		<div>
-			<oval-link text="View my work" to="/"/>
+		<div class="button-container">
+			<oval-link class="view-my-work" text="View my work" to="/" :myStyle="this.ovalStyle"/>
 		</div>
+
 	</div>
 </template>
 
@@ -43,7 +52,12 @@ export default {
 		align-self: start;
 	}
 
-	div{
+	.button-container {
+		.view-my-work{
+			position: absolute;
+			right: -4vw;
+			font-size: 3.5vw;
+		}
 	}
 }
 	

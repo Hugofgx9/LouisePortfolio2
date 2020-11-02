@@ -6,6 +6,10 @@
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
 
+   position: relative;
+   overflow: hidden;
+   width: 100vw;
+
    .desktop {
     padding: $global-padding;
    }

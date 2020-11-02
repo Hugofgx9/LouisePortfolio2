@@ -73,7 +73,6 @@ nav{
 			span{
 				padding-right: 45px;
 				font-size: 18px;
-				text-color: red;
 			}
 		}
 	}
