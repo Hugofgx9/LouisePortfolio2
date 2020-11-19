@@ -56,12 +56,13 @@ export default {
 
 	li{
 		padding-bottom: 0.8vw;
-		.italic-text {
-			color: black;
-		}
 
-		a{
-			&:hover {
+		a, a span{
+			color: black;
+			transition: all .2s ease;
+
+			
+			&:hover, &:hover span{
 				color: $second-color;
 			}
 		}

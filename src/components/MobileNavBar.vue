@@ -13,7 +13,6 @@ export default {
 	},
 	methods: {
 		openMenu: function() {
-			this.isMenuVisible = !this.isMenuVisible;
 		}
 	},
 	computed: {
