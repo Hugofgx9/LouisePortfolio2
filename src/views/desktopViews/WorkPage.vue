@@ -1,39 +1,50 @@
 <script>
+import { mapState } from 'vuex';
+
 export default {
-  name: 'WorkPage',
-  
+	name: 'WorkPage',
+	data() {
+		return {
+		}
+	},
+	mounted () {
+	},
+	computed: mapState([
+		'works'
+	]),
 }
 </script>
 
 <template>
-  <div id="my-work">
+	<div id="my-work">
 
-		<h2> Bee and Flowers </h2>
+		<h2> {{ works[0].title }} </h2>
 
 		<div class="about-my-work">
 			<ul class="about-list">
 				<li class="software">
 					<h3>SoftWare</h3>
 					<ul class="about-item">
-						<li>Cinema 4D</li>
-						<li>Photoshop</li>
+						<li v-for="software in works[0].software" :key="software"> 
+							{{ software }}
+						</li>
 					</ul>
 				</li>
 				<li class="project">
 					<h3>Project</h3>
 					<div class="about-item">
-						<p>Cover and animation for BastonBstnBaston</p>
+						<p> {{ works[0].description }} </p>
 					</div>
 				</li>
 			</ul>
+
 		</div>
 
 		<div>
 			<img src="" alt=""/>
 			<img src="" alt=""/>
 		</div>
-
-  </div>
+	</div>
 </template>
 
 <style lang='scss' scoped>
