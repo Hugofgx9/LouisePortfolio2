@@ -1,46 +1,54 @@
 <script>
 import infiniteScroll from '@/myClass/infiniteScroll.js';
+import { mapState } from 'vuex';
 
 export default {
 	name: 'InfiniteScroll',
 
 	data () {
 		return {
-			projects: [
-				{lib: 'Corona Virus', type: 'PRINT + ANIMATION', link:'work/coronavirus'},
-				{lib: 'Marcel Breuer', type: 'BOOK', link:'work/coronavirus'},
-				{lib: 'Bee And Flowers', type: 'ANIMATION', link:'work/coronavirus'},
-				{lib: 'Raving In The Shower', type: 'COVER', link:'work/coronavirus'},
-				{lib: 'Archetype', type: 'IKEA', link:'work/coronavirus'},
-				{lib: 'clic clic', type: 'BIC', link:'work/coronavirus'},
-				{lib: 'Recommandation', type: 'PRESENTATION', link:'work/coronavirus'},
-				{lib: 'Drawings', type: 'SKETCH', link:'work/coronavirus'},
-			]
 		}
 	},
-
+	beforeRouteEnter (to, from, next) {
+  },
 	mounted: function () {
 		const myScroll = new infiniteScroll('#infinit-scroll-box', 'ul');
-	},
-
-	methods: {
-	},
-
-	computed: {
-		windowWidth: function () {
-			return this.$store.state.windowWidth;
+		if (this.projects) {
+			this.fetchAllImage();
 		}
+		//this.preloadImg(`https://drive.google.com/uc?id=${this.projects[0].value.illustrations[0].id}`);
+	},
+	methods: {
+		preloadImg: (url) => {
+			let img = new Image();
+			img.src = url;
+			img.onload = () => console.log('img loaded');
+		},
+		fetchAllImage: () => {
+			this.projects.map((project) => {
+				console.log(project);
+				this.preloadImg(`https://drive.google.com/uc?id=${project.value.illustrations[0].id}`);
+				this.preloadImg(`https://drive.google.com/uc?id=${project.value.illustrations[1].id}`);
+			});
+			console.log('all imgs loaded')
+		}
+	},
+	computed: {
+		...mapState(['works', 'windowWidth']),
+		projects: function() {
+			return Object.entries(this.works).map(([key, value]) => ({key,value}));
+		},
 	}
 }
 	
 </script>
 
 <template>
-	<div id='infinit-scroll-box'>
+	<div id='infinit-scroll-box' v-if="projects">
 		<ul>
-			<li v-for="project in projects" :key="project.lib">
-				<router-link :to='project.link'>
-					<span class='italic-text'> {{ project.lib }} </span> - {{ project.type }} 
+			<li v-for="project in projects" :key="project.key">
+				<router-link :to="`work/${project.key}`">
+					<span class='italic-text'> {{ project.value.title }} </span> - {{ project.value.type }} 
 				</router-link>
 			</li>
 		</ul>

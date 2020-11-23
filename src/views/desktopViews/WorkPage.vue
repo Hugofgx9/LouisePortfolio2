@@ -8,10 +8,12 @@ export default {
 	name: 'WorkPage',
 	data() {
 		return {
+			loaded: false,
 		}
 	},
 	mounted () {
 		this.createAboutScroll();
+		this.preloadImg(`https://drive.google.com/uc?id=${this.work.illustrations[0].id}`);
 	},
 	methods: {
 		createAboutScroll: () => {
@@ -23,11 +25,20 @@ export default {
 				pin: true,
 				scrub: 1,
 			});
-		}
+		},
+		preloadImg: function(url) {
+			let img = new Image();
+			img.src = url;
+			img.onload = () => {
+				console.log('img loaded')
+				this.loaded = true;
+			};
+		},
 	},
 	computed:  {
 		...mapState(['works']),
 		work: function() {
+			//console.log(Object.entries(this.works).map(([key, value]) => ({key,value})));
 			return this.works[this.$route.params.id];
 		}
 	},
@@ -35,15 +46,17 @@ export default {
 </script>
 
 <template>
-	<div id="my-work" v-if="work">
+	<div id="my-work" v-if="works && loaded">
 
 		<h2> {{ work.title }} </h2>
 
 		<div class="container">
 
 			<div class="illustration-section">
-				<img class="illustration-1" :src="work.img1" alt=""/>
-				<img class="illustration-2" :src="work.img2" alt=""/>
+				<img class="illustration-1" :src="`https://drive.google.com/uc?id=${work.illustrations[0].id}`" 
+							:alt="work.illustrations[0].alternative"/>
+				<img class="illustration-2" :src="`https://drive.google.com/uc?id=${work.illustrations[1].id}`" 
+							:alt="work.illustrations[0].alternative"/>
 			</div>
 
 			<div class="about-my-work">
