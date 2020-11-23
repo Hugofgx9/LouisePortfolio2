@@ -13,7 +13,7 @@ export default {
 				{ screenTyp:'sm', value: 768 },
 				{ screenTyp:'lg', value: Infinity },
 			],
-			windowWidth: 0,
+			windowWidth: 1300,
 			condition: false,
 		}
 	},
@@ -37,8 +37,8 @@ export default {
 				this.condition = this.breakpoints[index].value > this.windowWidth;
 			} 
 			else {
-				this.condition = this.breakpoints[index - 1].value < this.windowWidth
-													&& this.windowWidth < this.breakpoints[index].value;
+				this.condition = this.breakpoints[index - 1].value < this.windowWidth 
+				&& this.windowWidth < this.breakpoints[index].value;
 			}
 		}
 	},

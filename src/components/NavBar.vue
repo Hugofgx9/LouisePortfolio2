@@ -54,7 +54,6 @@ ul {
 		}
 
 		a.router-link-active {
-			display: none;
 		}
 	}
 }
