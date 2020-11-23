@@ -25,11 +25,7 @@ const routes = [
 		component: require('@/views/desktopViews/Contact.vue').default
 	},
 	{
-		path: '/workpage/:id',
-		component: require('@/views/desktopViews/WorkPage.vue').default
-	},
-	{
-		path: '/workpage',
+		path: '/work/:id',
 		component: require('@/views/desktopViews/WorkPage.vue').default
 	},
 	{

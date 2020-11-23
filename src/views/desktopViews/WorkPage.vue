@@ -11,16 +11,19 @@ export default {
 		}
 	},
 	mounted () {
-		ScrollTrigger.create({
-			trigger:'.about-list',
-			start:'top top+=24px',
-			endTrigger: "about-my-work",
-			end: "bottom bottom",
-			pin: true,
-			scrub: 1,
-		});
+		this.createAboutScroll();
 	},
 	methods: {
+		createAboutScroll: () => {
+			ScrollTrigger.create({
+				trigger:'.about-list',
+				start:'top top+=24px',
+				endTrigger: "about-my-work",
+				end: "bottom bottom",
+				pin: true,
+				scrub: 1,
+			});
+		}
 	},
 	computed:  {
 		...mapState(['works']),
@@ -39,14 +42,14 @@ export default {
 		<div class="container">
 
 			<div class="illustration-section">
-				<img class="illustration-1" src="https://drive.google.com/uc?id=1Do8pXLqcAhhcMHCB8HHQamZXpHPTtNTr" alt=""/>
-				<img class="illustration-2" src="https://drive.google.com/uc?id=1Do8pXLqcAhhcMHCB8HHQamZXpHPTtNTr" alt=""/>
+				<img class="illustration-1" :src="work.img1" alt=""/>
+				<img class="illustration-2" :src="work.img2" alt=""/>
 			</div>
 
 			<div class="about-my-work">
 				<ul class="about-list">
 					<li class="software">
-						<h3>SoftWare</h3>
+						<h3>Software</h3>
 						<ul class="about-item">
 							<li v-for="software in work.software" :key="software"> 
 								{{ software }}
@@ -73,18 +76,16 @@ export default {
 
 #my-work {
 
+	h2 {
+		margin-bottom: $global-padding;
+	}
+
 	.container {
 		display: grid;
 		grid-template-columns: 1fr 405px;
 
 		.about-my-work {
 			grid-column: 2;
-			//height: fit-content;
-			//background-color: red;
-
-			ul {
-				//background-color: blue;
-			}
 
 			h3 {
 				font-weight: normal;
@@ -115,8 +116,6 @@ export default {
 			}
 		}
 	}
-
-
 }
 
 </style>

@@ -1,5 +1,5 @@
 <script>
-import infiniteScroll from '../myClass/infiniteScroll.js';
+import infiniteScroll from '@/myClass/infiniteScroll.js';
 
 export default {
 	name: 'InfiniteScroll',
@@ -7,14 +7,14 @@ export default {
 	data () {
 		return {
 			projects: [
-				{lib: 'Corona Virus', type: 'PRINT + ANIMATION'},
-				{lib: 'Marcel Breuer', type: 'BOOK'},
-				{lib: 'Bee And Flowers', type: 'ANIMATION'},
-				{lib: 'Raving In The Shower', type: 'COVER'},
-				{lib: 'Archetype', type: 'IKEA'},
-				{lib: 'clic clic', type: 'BIC'},
-				{lib: 'Recommandation', type: 'PRESENTATION'},
-				{lib: 'Drawings', type: 'SKETCH'},
+				{lib: 'Corona Virus', type: 'PRINT + ANIMATION', link:'work/coronavirus'},
+				{lib: 'Marcel Breuer', type: 'BOOK', link:'work/coronavirus'},
+				{lib: 'Bee And Flowers', type: 'ANIMATION', link:'work/coronavirus'},
+				{lib: 'Raving In The Shower', type: 'COVER', link:'work/coronavirus'},
+				{lib: 'Archetype', type: 'IKEA', link:'work/coronavirus'},
+				{lib: 'clic clic', type: 'BIC', link:'work/coronavirus'},
+				{lib: 'Recommandation', type: 'PRESENTATION', link:'work/coronavirus'},
+				{lib: 'Drawings', type: 'SKETCH', link:'work/coronavirus'},
 			]
 		}
 	},
@@ -39,9 +39,9 @@ export default {
 	<div id='infinit-scroll-box'>
 		<ul>
 			<li v-for="project in projects" :key="project.lib">
-				<a href="" >
+				<router-link :to='project.link'>
 					<span class='italic-text'> {{ project.lib }} </span> - {{ project.type }} 
-				</a>
+				</router-link>
 			</li>
 		</ul>
 	</div>
