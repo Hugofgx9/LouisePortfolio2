@@ -6,15 +6,18 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default {
 	name: 'WorkPage',
+	props: ['id'],
 	data() {
 		return {
+			loaded: false,
+
 		}
 	},
-	mounted () {
+	mounted () { 
 		this.createAboutScroll();
 	},
 	methods: {
-		createAboutScroll: () => {
+		createAboutScroll() {
 			ScrollTrigger.create({
 				trigger:'.about-list',
 				start:'top top+=24px',
@@ -23,12 +26,13 @@ export default {
 				pin: true,
 				scrub: 1,
 			});
-		}
+		},
 	},
 	computed:  {
 		...mapState(['works']),
-		work: function() {
-			return this.works[this.$route.params.id];
+		work() {
+			//console.log(Object.entries(this.works).map(([key, value]) => ({key,value})));
+			return this.works[this.id];
 		}
 	},
 }
@@ -42,8 +46,11 @@ export default {
 		<div class="container">
 
 			<div class="illustration-section">
-				<img class="illustration-1" :src="work.img1" alt=""/>
-				<img class="illustration-2" :src="work.img2" alt=""/>
+				<img class="illustration-1" ref='illustration1' 
+				:src="`https://drive.google.com/uc?id=${work.illustrations[1].id}`"  
+				:alt="work.illustrations[0].alternative"/>
+				<img class="illustration-2" :src="`https://drive.google.com/uc?id=${work.illustrations[1].id}`" 
+							:alt="work.illustrations[1].alternative"/>
 			</div>
 
 			<div class="about-my-work">

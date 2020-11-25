@@ -17,7 +17,7 @@ export default {
 	<div id="app">
 		<mq-slot mq="lg" class="desktop">
 			<nav-bar />
-			<router-view/>
+			<router-view :key="$route.path"/>
 		</mq-slot>
 		
 		<mq-slot mq="sm" class="mobile">

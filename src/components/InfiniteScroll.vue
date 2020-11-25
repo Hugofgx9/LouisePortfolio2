@@ -1,49 +1,47 @@
 <script>
 import infiniteScroll from '@/myClass/infiniteScroll.js';
+import { mapState } from 'vuex';
+import WorkPage from '@/views/desktopViews/WorkPage';
 
 export default {
 	name: 'InfiniteScroll',
+  components: {
+    WorkPage
+  },
 
 	data () {
 		return {
-			projects: [
-				{lib: 'Corona Virus', type: 'PRINT + ANIMATION', link:'work/coronavirus'},
-				{lib: 'Marcel Breuer', type: 'BOOK', link:'work/coronavirus'},
-				{lib: 'Bee And Flowers', type: 'ANIMATION', link:'work/coronavirus'},
-				{lib: 'Raving In The Shower', type: 'COVER', link:'work/coronavirus'},
-				{lib: 'Archetype', type: 'IKEA', link:'work/coronavirus'},
-				{lib: 'clic clic', type: 'BIC', link:'work/coronavirus'},
-				{lib: 'Recommandation', type: 'PRESENTATION', link:'work/coronavirus'},
-				{lib: 'Drawings', type: 'SKETCH', link:'work/coronavirus'},
-			]
 		}
 	},
-
 	mounted: function () {
-		const myScroll = new infiniteScroll('#infinit-scroll-box', 'ul');
+		// les ul dupliquer contiennet des a et non des link, il faudrait les changer en link;
+		//const myScroll = new infiniteScroll('#infinit-scroll-box', 'ul');
 	},
-
 	methods: {
 	},
-
 	computed: {
-		windowWidth: function () {
-			return this.$store.state.windowWidth;
-		}
+		...mapState(['works', 'windowWidth']),
+		projects() {
+			return Object.entries(this.works).map(([key, value]) => ({key,value}));
+		},
 	}
 }
 	
 </script>
 
 <template>
-	<div id='infinit-scroll-box'>
+	<div id='infinit-scroll-box' v-if="projects">
 		<ul>
-			<li v-for="project in projects" :key="project.lib">
-				<router-link :to='project.link'>
-					<span class='italic-text'> {{ project.lib }} </span> - {{ project.type }} 
+			<li v-for="project in projects" :key="project.key">
+				<router-link :to="`work/${project.key}`">
+					<span class='italic-text'> {{ project.value.title }} </span> - {{ project.value.type }} 
 				</router-link>
 			</li>
 		</ul>
+		<div style="display: none;">
+			<!-- Use to prerender the items -->
+			<WorkPage v-for="project in projects" :id="project.key" :key="project.key"/>
+		</div>
 	</div>
 	
 </template>

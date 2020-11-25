@@ -18,7 +18,7 @@ const routes = [
 	},
 	{
 		path: '/about',
-		component: require('@/views/desktopViews/About.vue').default
+		component: require('@/views/desktopViews/About.vue').default,
 	},
 	{
 		path: '/contact',
@@ -26,7 +26,9 @@ const routes = [
 	},
 	{
 		path: '/work/:id',
-		component: require('@/views/desktopViews/WorkPage.vue').default
+		name: 'work',
+		component: require('@/views/desktopViews/WorkPage.vue').default,
+		props: true,
 	},
 	{
 		path: '/*',
