@@ -1,41 +1,27 @@
 <script>
 import infiniteScroll from '@/myClass/infiniteScroll.js';
 import { mapState } from 'vuex';
+import WorkPage from '@/views/desktopViews/WorkPage';
 
 export default {
 	name: 'InfiniteScroll',
+  components: {
+    WorkPage
+  },
 
 	data () {
 		return {
 		}
 	},
-	beforeRouteEnter (to, from, next) {
-  },
 	mounted: function () {
-		const myScroll = new infiniteScroll('#infinit-scroll-box', 'ul');
-		if (this.projects) {
-			this.fetchAllImage();
-		}
-		//this.preloadImg(`https://drive.google.com/uc?id=${this.projects[0].value.illustrations[0].id}`);
+		// les ul dupliquer contiennet des a et non des link, il faudrait les changer en link;
+		//const myScroll = new infiniteScroll('#infinit-scroll-box', 'ul');
 	},
 	methods: {
-		preloadImg: (url) => {
-			let img = new Image();
-			img.src = url;
-			img.onload = () => console.log('img loaded');
-		},
-		fetchAllImage: () => {
-			this.projects.map((project) => {
-				console.log(project);
-				this.preloadImg(`https://drive.google.com/uc?id=${project.value.illustrations[0].id}`);
-				this.preloadImg(`https://drive.google.com/uc?id=${project.value.illustrations[1].id}`);
-			});
-			console.log('all imgs loaded')
-		}
 	},
 	computed: {
 		...mapState(['works', 'windowWidth']),
-		projects: function() {
+		projects() {
 			return Object.entries(this.works).map(([key, value]) => ({key,value}));
 		},
 	}
@@ -52,6 +38,10 @@ export default {
 				</router-link>
 			</li>
 		</ul>
+		<div style="display: none;">
+			<!-- Use to prerender the items -->
+			<WorkPage v-for="project in projects" :id="project.key" :key="project.key"/>
+		</div>
 	</div>
 	
 </template>

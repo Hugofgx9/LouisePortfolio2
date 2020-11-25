@@ -6,17 +6,18 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default {
 	name: 'WorkPage',
+	props: ['id'],
 	data() {
 		return {
 			loaded: false,
+
 		}
 	},
-	mounted () {
+	mounted () { 
 		this.createAboutScroll();
-		this.preloadImg(`https://drive.google.com/uc?id=${this.work.illustrations[0].id}`);
 	},
 	methods: {
-		createAboutScroll: () => {
+		createAboutScroll() {
 			ScrollTrigger.create({
 				trigger:'.about-list',
 				start:'top top+=24px',
@@ -26,37 +27,30 @@ export default {
 				scrub: 1,
 			});
 		},
-		preloadImg: function(url) {
-			let img = new Image();
-			img.src = url;
-			img.onload = () => {
-				console.log('img loaded')
-				this.loaded = true;
-			};
-		},
 	},
 	computed:  {
 		...mapState(['works']),
-		work: function() {
+		work() {
 			//console.log(Object.entries(this.works).map(([key, value]) => ({key,value})));
-			return this.works[this.$route.params.id];
+			return this.works[this.id];
 		}
 	},
 }
 </script>
 
 <template>
-	<div id="my-work" v-if="works && loaded">
+	<div id="my-work" v-if="work">
 
 		<h2> {{ work.title }} </h2>
 
 		<div class="container">
 
 			<div class="illustration-section">
-				<img class="illustration-1" :src="`https://drive.google.com/uc?id=${work.illustrations[0].id}`" 
-							:alt="work.illustrations[0].alternative"/>
+				<img class="illustration-1" ref='illustration1' 
+				:src="`https://drive.google.com/uc?id=${work.illustrations[1].id}`"  
+				:alt="work.illustrations[0].alternative"/>
 				<img class="illustration-2" :src="`https://drive.google.com/uc?id=${work.illustrations[1].id}`" 
-							:alt="work.illustrations[0].alternative"/>
+							:alt="work.illustrations[1].alternative"/>
 			</div>
 
 			<div class="about-my-work">
