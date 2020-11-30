@@ -1,5 +1,7 @@
 <script>
 import { mapState } from 'vuex';
+import gsap from 'gsap';
+import imgMenu from '@/myClass/imgMenu';
 
 export default {
 	name: 'WorkList',
@@ -9,6 +11,7 @@ export default {
 		}
 	},
 	mounted () {
+		new imgMenu;
 	},
 	methods: {
 	},
@@ -26,8 +29,11 @@ export default {
 		<ul class="infinit-scroll-single-list">
 			<li v-for="project in projects" :key="project.key">
 				<router-link :to="`work/${project.key}`">
-					<span class='italic-text'> {{ project.value.title }} </span> - {{ project.value.type }} 
+					<span class='italic-text'> {{ project.value.title }} </span><span class="type-of-work"> - {{ project.value.type }} </span>
 				</router-link>
+				<div class="hover-img">
+					<img :src="`https://drive.google.com/uc?id=${project.value.illustrations[1].id}`">
+				</div>
 			</li>
 		</ul>
 </template>
@@ -40,12 +46,42 @@ export default {
 		padding-bottom: 0.8vw;
 
 		a, a span{
+			position: relative;
+			z-index: 5;
 			color: black;
 			transition: all .2s ease;
 
+			span.type-of-work {
+				margin-left: 100px;
+				opacity: 0;
+				text-transform: uppercase;
+			}
 			
 			&:hover, &:hover span{
 				color: $second-color;
+
+				&.type-of-work {
+					margin-left: 0;
+					opacity: 1;
+				}
+			}
+		}
+
+		.hover-img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 200px;
+			height: auto;
+			z-index: -1;
+			opacity: 0;
+			//overflow: hidden;
+
+			img {
+				width: 100%;
+				height: auto;
+				position: relative;
+				transform: translate(-50%, -50%);
 			}
 		}
 	}

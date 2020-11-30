@@ -3,6 +3,7 @@ import infiniteScroll from '@/myClass/infiniteScroll.js';
 import WorkPage from '@/views/desktopViews/WorkPage';
 import WorkList from '@/components/WorkList';
 import { mapState } from 'vuex';
+import gsap from 'gsap';
 
 export default {
 	name: 'InfiniteScroll',
@@ -13,44 +14,36 @@ export default {
 	data () {
 		return {
 			loaded: false,
-			numberOfList: 3,
+			numberOfList: 1,
 			ContainerHeight: 0,
 			ContentHeight: 0,
 			myScroll: undefined,
 		}
 	},
 	mounted () {
-		this.myScroll = new infiniteScroll(this.$refs['infinit-scroll-box'], this.$refs['infinit-scroll-box'].querySelector('ul'));
 		this.loaded = true;
+		this.myScroll = new infiniteScroll(this.$refs['infinit-scroll'], 
+			this.$refs['infinit-scroll'].querySelector('ul'));
 
-		//how to determine number of list ?
 		this.numberOfList = 3;
 	},
 	beforeDestroyed () {
 		this.myScroll.removeEventListener();
 	},
 	methods: {
-		onScroll (element) {
-			element.addEventListener('scroll', () => {
-				console.log(element.scrollTop);
-			})
-		}
 	},
 	computed: {
 		...mapState(['works', 'windowWidth']),
 		projects() {
 			return Object.entries(this.works).map(([key, value]) => ({key,value}));
 		},
-		// workListHeight() {
-		// 	return this.$refs['infinit-scroll-box'].
-		// }
 	}
 }
 	
 </script>
 
 <template>
-	<div ref="infinit-scroll-box" id='infinit-scroll-box' v-if="projects">
+	<div ref="infinit-scroll" id='infinit-scroll' v-if="projects">
 		<WorkList ref="scroll-content" v-for="item in numberOfList" :key="item"/>
 
 		<!-- Use to prerender the items -->
@@ -64,12 +57,12 @@ export default {
 
 <style lang='scss' scoped>
 
-#infinit-scroll-box {
+#infinit-scroll {
 	height: 100%;
 	overflow: scroll;
 
 	&::-webkit-scrollbar {
-    display: none;
+		display: none;
 	}
 }
 </style>
