@@ -43,6 +43,8 @@ ul {
 	grid-template-columns: 1fr repeat(3, 140px);
 	grid-template-rows: auto;
 	padding-bottom: 24px;
+	position: relative;
+	z-index: 1;
 
 
 

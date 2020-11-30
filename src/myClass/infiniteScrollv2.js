@@ -10,7 +10,7 @@ export default class infiniteScroll {
 	init() {
 
 		//clone
-		// this.cloneElement(this.container, this.content);
+		this.cloneElement(this.container, this.content);
 		this.numberOfItem = this.content.childElementCount;
 
 		this.getHeight();
@@ -52,12 +52,6 @@ export default class infiniteScroll {
 	}
 
 	onResize() {
-		window.addEventListener('resize', () => {
-			this.getHeight();
-		})
-	}
-
-	removeEventListener () {
 		window.addEventListener('resize', () => {
 			this.getHeight();
 		})

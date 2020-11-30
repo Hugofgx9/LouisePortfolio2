@@ -12,11 +12,12 @@ export default {
 		}
 	},
 	methods: {
-		openMenu: function() {
+		openMenu() {
+			this.isMenuVisible = !this.isMenuVisible;
 		}
 	},
 	computed: {
-		windowWidth: function () {
+		windowWidth() {
 			return this.$store.state.windowWidth;
 		}
 	}

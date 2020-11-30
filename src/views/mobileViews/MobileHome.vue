@@ -5,7 +5,7 @@ export default {
 	name: 'MobileHome',
 	components: {
 		OvalLink,
-		InfiniteScroll,
+		// InfiniteScroll,
 	},
 	data() {
 		return {
@@ -36,7 +36,7 @@ export default {
 			</div>
 		</div>
 		<div id="works">
-			<InfiniteScroll/>
+			<!-- <InfiniteScroll/> -->
 		</div>
 
 	</div>

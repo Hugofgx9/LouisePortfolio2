@@ -1,21 +1,34 @@
 <script>
 import infiniteScroll from '@/myClass/infiniteScroll.js';
-import { mapState } from 'vuex';
 import WorkPage from '@/views/desktopViews/WorkPage';
+import WorkList from '@/components/WorkList';
+import { mapState } from 'vuex';
+import gsap from 'gsap';
 
 export default {
 	name: 'InfiniteScroll',
-  components: {
-    WorkPage
-  },
-
+	components: {
+		WorkPage,
+		WorkList
+	},
 	data () {
 		return {
+			loaded: false,
+			numberOfList: 1,
+			ContainerHeight: 0,
+			ContentHeight: 0,
+			myScroll: undefined,
 		}
 	},
-	mounted: function () {
-		// les ul dupliquer contiennet des a et non des link, il faudrait les changer en link;
-		//const myScroll = new infiniteScroll('#infinit-scroll-box', 'ul');
+	mounted () {
+		this.loaded = true;
+		this.myScroll = new infiniteScroll(this.$refs['infinit-scroll'], 
+			this.$refs['infinit-scroll'].querySelector('ul'));
+
+		this.numberOfList = 3;
+	},
+	beforeDestroyed () {
+		this.myScroll.removeEventListener();
 	},
 	methods: {
 	},
@@ -30,46 +43,26 @@ export default {
 </script>
 
 <template>
-	<div id='infinit-scroll-box' v-if="projects">
-		<ul>
-			<li v-for="project in projects" :key="project.key">
-				<router-link :to="`work/${project.key}`">
-					<span class='italic-text'> {{ project.value.title }} </span> - {{ project.value.type }} 
-				</router-link>
-			</li>
-		</ul>
-		<div style="display: none;">
-			<!-- Use to prerender the items -->
+	<div ref="infinit-scroll" id='infinit-scroll' v-if="projects">
+		<WorkList ref="scroll-content" v-for="item in numberOfList" :key="item"/>
+
+		<!-- Use to prerender the items -->
+		<div v-if="!loaded" style="display: none;">
 			<WorkPage v-for="project in projects" :id="project.key" :key="project.key"/>
 		</div>
+
 	</div>
 	
 </template>
 
 <style lang='scss' scoped>
 
-#infinit-scroll-box {
+#infinit-scroll {
 	height: 100%;
 	overflow: scroll;
 
-	li{
-		padding-bottom: 0.8vw;
-
-		a, a span{
-			color: black;
-			transition: all .2s ease;
-
-			
-			&:hover, &:hover span{
-				color: $second-color;
-			}
-		}
-	}
-
 	&::-webkit-scrollbar {
-    display: none;
+		display: none;
 	}
 }
-
-	
 </style>
