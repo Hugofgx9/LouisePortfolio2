@@ -32,7 +32,9 @@ export default {
 					<span class='italic-text'> {{ project.value.title }} </span><span class="type-of-work"> - {{ project.value.type }} </span>
 				</router-link>
 				<div class="hover-img">
-					<img :src="`https://drive.google.com/uc?id=${project.value.illustrations[1].id}`">
+					<div class="hover-img__inner">
+						<img :src="`https://drive.google.com/uc?id=${project.value.illustrations[1].id}`">
+					</div>
 				</div>
 			</li>
 		</ul>
@@ -43,13 +45,17 @@ export default {
 .infinit-scroll-single-list {
 
 	li{
-		padding-bottom: 0.8vw;
 
 		a, a span{
 			position: relative;
 			z-index: 5;
 			color: black;
 			transition: all .2s ease;
+
+			span.italic-text {
+				display: inline-block;
+				padding-bottom: 0.8vw;
+			}
 
 			span.type-of-work {
 				margin-left: 100px;
@@ -75,13 +81,17 @@ export default {
 			height: auto;
 			z-index: -1;
 			opacity: 0;
-			//overflow: hidden;
+			transform: translate(-50%, -50%);
 
-			img {
-				width: 100%;
-				height: auto;
-				position: relative;
-				transform: translate(-50%, -50%);
+			.hover-img__inner {
+				overflow: hidden;
+
+
+				img {
+					width: 100%;
+					height: auto;
+					position: relative;
+				}
 			}
 		}
 	}

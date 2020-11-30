@@ -11,13 +11,15 @@ export default class imgMenu {
 
 	}
 	hoverEvent(el)  {
-		let img = el.querySelector('.hover-img');
+		let imgContainer = el.querySelector('.hover-img');
+		let hover = el.querySelector('.italic-text');
 
-		el.addEventListener("mouseenter",(ev) => {
-			this.showImg(img);
+		hover.addEventListener("mouseenter",(ev) => {
+			this.showImg(imgContainer);
+			console.log(imgContainer);
 		});
-		el.addEventListener("mouseleave",(ev) => {
-			this.hideImg(img);
+		hover.addEventListener("mouseleave",(ev) => {
+			this.hideImg(imgContainer);
 		});
 	}
 
@@ -33,15 +35,39 @@ export default class imgMenu {
 		window.addEventListener("mousemove",(ev) => updateMouse(ev));
 	}
 	showImg (el) {
-		gsap.to(el, 0.2, {
-			opacity: 1,
-			//delay: 1,
-		});
+		let img = el.querySelector('img');
+
+		gsap.killTweensOf(el);
+		gsap.killTweensOf(img);
+
+		let tl = gsap.timeline({
+			onStart: () => {
+				//gsap.set(img, {x: '+100%'});
+			}
+		})
+		// tl.to(img, 0.1, {
+		// 	x: 0,
+		// 	ease: "power1.inOut",
+		// });
+		tl.set(el, {opacity: 1});
 	}
 	hideImg (el) {
-		gsap.to(el, 0.2, {
-			opacity: 0,
-		});
+		let img = el.querySelector('img');
+
+		gsap.killTweensOf(el);
+		gsap.killTweensOf(img);
+
+		let tl = gsap.timeline({
+			delay: 0.1,
+			// onComplete: () => {
+			// 		gsap.set(el, {opacity: 0});
+			// }
+		})
+		// tl.to(img, 0.1, {
+		// 	x: '-100%',
+		// 	ease: "power1.inOut",
+		// });
+		tl.set(el, {opacity: 0});
 	}
 	imgPosition () {
 		const changeImgPosition = (el) => {
