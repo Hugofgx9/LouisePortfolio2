@@ -18,17 +18,28 @@ const routes = [
 	},
 	{
 		path: '/about',
-		component: require('@/views/desktopViews/About.vue').default,
+		components: {
+			default: () => import('@/views/desktopViews/About.vue'),
+			mobile: () => import('@/views/mobileViews/MobileAbout.vue'),
+		}
 	},
 	{
 		path: '/contact',
-		component: require('@/views/desktopViews/Contact.vue').default
+		components: {
+			default: () => import('@/views/desktopViews/Contact.vue'),
+			mobile: () => import('@/views/mobileViews/MobileContact.vue'),
+		}
 	},
 	{
 		path: '/work/:id',
-		name: 'work',
-		component: require('@/views/desktopViews/WorkPage.vue').default,
-		props: true,
+		components: {
+			default: () => import('@/views/desktopViews/WorkPage.vue'),
+			mobile: () => import('@/views/mobileViews/MobileWorkPage.vue'),
+		},
+		props: {
+			default: true,
+			mobile: true
+		}
 	},
 	{
 		path: '/*',

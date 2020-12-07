@@ -70,11 +70,13 @@ a {
 	border: 1px solid;
 	width: 120px;
 	display: flex;
-	font-style: italic;
 	justify-content: center;
 	align-items: center;
 	border-radius: 50%;
 	transition: all .1s ease;
+  font-family: 'Times New Roman';
+  font-style: italic;
+  font-size: 18px;
 
 	&.white {
 		border-color: $primary-color;
