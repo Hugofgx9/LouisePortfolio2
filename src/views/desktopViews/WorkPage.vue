@@ -41,7 +41,7 @@ export default {
 <template>
 	<div id="my-work" v-if="work">
 
-		<h2> {{ work.title }} </h2>
+		<h2 class="italic-text"> {{ work.title }} </h2>
 
 		<div class="container">
 
@@ -82,9 +82,13 @@ export default {
 <style lang='scss' scoped>
 
 #my-work {
+	margin-top: $global-padding;
 
 	h2 {
 		margin-bottom: $global-padding;
+		font-size: $big-font-size;
+		color: $primary-color;
+		font-weight: normal;
 	}
 
 	.container {
@@ -111,16 +115,17 @@ export default {
 			margin-right: 10vw;
 			position: relative;
 
-			.illustration-2, .illustration-2 {
-				width: 100%;
-				height: auto;	
-			}
-
 			.illustration-1 {
 				position: relative;
 				width: calc(100% + #{$global-padding});
 				margin-left: -$global-padding;
+				margin-bottom: $global-padding;
 			}
+			.illustration-2{
+				width: 100%;
+				height: auto;	
+			}
+
 		}
 	}
 }

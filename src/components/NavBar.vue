@@ -45,9 +45,7 @@ ul {
 	padding-bottom: 24px;
 	position: relative;
 	z-index: 1;
-
-
-
+	
 	li {
 		grid-row: 1;
 

@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'About',
+  name: 'AboutMobile',
 }
 
 </script>
@@ -62,22 +62,22 @@ export default {
 <style lang='scss' scoped>
 
 #about{
-	display: grid;
 	height: 100%;
-	grid-template-columns: 1fr 405px;
+	margin-top: calc(2* #{$global-padding});
+
 	// align-items: center;
 	
 	.paragraph-1 {
-		font-size: $big-font-size;
-		padding-right: 7vw;
+		font-size: $big-font-mobile;
 	}
 
 	.cv-container {
+	margin-top: calc(4 * #{$global-padding});
 
 		h2{
+			font-size: $big-font-mobile;
 			font-weight: normal;
 			border-bottom: solid 1px $primary-color;
-			font-size: 2em;
 			padding-bottom: .3em;
 		}
 
@@ -118,29 +118,6 @@ export default {
 
 			&:not(:first-of-type) {
 				margin-top: 24px;
-			}
-		}
-	}
-	@media (max-width: 933px) {
-		grid-template-rows: auto auto;
-		grid-template-columns: 1fr;
-
-	}
-	@media (max-width: 768px) {
-		.paragraph-1{
-			font-size: $big-font-mobile;
-			padding: 0;
-		}
-
-		.cv-container {
-			margin-top: 10vw;
-
-			h2 {
-				font-size: $big-font-mobile;
-			}
-
-			li.cv-section{
-				font-size: 3.5vw;
 			}
 		}
 	}
