@@ -17,21 +17,20 @@ export default {
 			condition: false,
 		}
 	},
-	created: function () {
-		this.makeCondition();
+	created () {
 		this.updateWidth();
-		//console.log(this.breakpoints[this.breakpoints.findIndex(e => e.screenTyp === this.mq) - 1 ].value);
+		window.addEventListener( 'resize', () => {
+			this.updateWidth();
+		}, false)
 	}, 
 	methods: {
-		updateWidth: function () {
-			window.addEventListener( 'resize', () => {
+		updateWidth () {
 				this.windowWidth = window.innerWidth;
 				//this.$store.commit('setWindowWidth')
 				//this.windowWidth = this.$store.state.windowWidth;
 				this.makeCondition();
-			}, false)
 		}, 
-		makeCondition: function() {
+		makeCondition () {
 			let index = this.breakpoints.findIndex(e => e.screenTyp === this.mq);
 			if (index == 0) {
 				this.condition = this.breakpoints[index].value > this.windowWidth;

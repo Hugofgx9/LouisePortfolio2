@@ -12,14 +12,14 @@ export default {
 		}
 	},
 	methods: {
-		openMenu() {
+		toogleMenu() {
 			this.isMenuVisible = !this.isMenuVisible;
-		}
+		},
 	},
 	computed: {
 		windowWidth() {
 			return this.$store.state.windowWidth;
-		}
+		},
 	}
 }
 	
@@ -27,11 +27,11 @@ export default {
 
 <template>
 	<nav>
-		<button @click="openMenu">
+		<button @click="toogleMenu">
 			<span>Menu</span>
 		</button>
 
-		<mobile-modal v-show="isMenuVisible"/>
+		<mobile-modal v-show="isMenuVisible" @close="toogleMenu"/>
 
 	</nav>
 	
