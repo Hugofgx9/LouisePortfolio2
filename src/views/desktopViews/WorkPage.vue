@@ -31,7 +31,6 @@ export default {
 	computed:  {
 		...mapState(['works']),
 		work() {
-			//console.log(Object.entries(this.works).map(([key, value]) => ({key,value})));
 			return this.works[this.id];
 		}
 	},

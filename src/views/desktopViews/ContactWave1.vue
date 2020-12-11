@@ -19,7 +19,7 @@ export default {
 			console.log(textArray);
 		},
 
-		textWave: function () {
+		textWave () {
 			let elContainer = document.querySelector('#contact .paragraph-1');
 			let timeIndex = 0;
 			let amplitude = 0.2;
