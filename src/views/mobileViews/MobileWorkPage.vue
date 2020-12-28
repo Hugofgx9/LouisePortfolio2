@@ -1,11 +1,15 @@
 <script>
 import { mapState } from 'vuex';
+import ImageOrVideo from '@/components/ImageOrVideo.vue';
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default {
 	name: 'MobileWorkPage',
+	components: {
+		ImageOrVideo
+	},
 	props: ['id'],
 	data() {
 		return {
@@ -32,9 +36,17 @@ export default {
 
 		<div class="container">
 
-			<img class="illustration-1" ref='illustration1' 
-				:src="`https://drive.google.com/uc?id=${work.illustrations[1].id}`"  
-				:alt="work.illustrations[0].alternative"/>
+			<ImageOrVideo 
+				class="illustration-1" 
+				ref='illustration1' 
+				:src="`https://drive.google.com/uc?id=${work.illustrations[0].id}`"  
+				:alt="work.illustrations[0].alternative"
+				:type="work.illustrations[0].type"
+			/>
+
+<!-- 			<img class="illustration-1" ref='illustration1' 
+				:src="`https://drive.google.com/uc?id=${work.illustrations[0].id}`"  
+				:alt="work.illustrations[0].alternative"/> -->
 
 			<div class="about-my-work">
 				<ul class="about-list">

@@ -14,7 +14,11 @@ const routes = [
 	},
 	{
 		path: '/works',
-		component: require('@/views/desktopViews/Works.vue').default
+		components: {
+			default : () => import('@/views/desktopViews/Works.vue'),
+		},
+		//if mobile
+		//redirect : '/home',
 	},
 	{
 		path: '/about',

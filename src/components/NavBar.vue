@@ -1,11 +1,25 @@
 <script>
-import OvalLink from '@/components/OvalLink.vue'
+import OvalLink from '@/components/OvalLink.vue';
+import gsap from 'gsap';
 
 export default {
 	name: 'NavBar',
 	components: {
 		OvalLink,
 	}, 
+	mounted () {
+
+		let navItem = document.querySelectorAll('nav ul li');
+
+
+		gsap.from(navItem, {
+			duration: 0.5, 
+			ease: "sine.inOut", 
+			//yPercent: 100,
+			opacity: 0, 
+			stagger: 0.1,
+		});
+	},
 	computed: {
 		windowWidth: function () {
 			return this.$store.state.windowWidth;
