@@ -33,7 +33,7 @@ export default {
 				</router-link>
 				<div class="hover-img">
 					<div class="hover-img__inner">
-						<img :src="`https://drive.google.com/uc?id=${project.value.illustrations[1].id}`">
+						<img :src="`https://drive.google.com/uc?id=${project.value.hover_img.src}`">
 					</div>
 				</div>
 			</li>
@@ -45,7 +45,6 @@ export default {
 .infinit-scroll-single-list {
 
 	li{
-
 		a, a span{
 			position: relative;
 			z-index: 5;
