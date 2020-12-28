@@ -79,8 +79,7 @@ export default {
 					<li class="project">
 						<h3>Project</h3>
 						<div class="about-item">
-							<p> 
-								{{ work.description }} 
+							<p v-html="work.description"> 
 							</p>
 						</div>
 					</li>
@@ -89,8 +88,7 @@ export default {
 
 		</div>
 
-	</div>
-</template>
+	</div></template>
 
 <style lang='scss' scoped>
 

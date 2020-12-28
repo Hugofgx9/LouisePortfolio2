@@ -10,7 +10,6 @@ export default {
 };
 </script>
 
-
 <template>
 	<div class='media'>
 		<img 
@@ -26,7 +25,6 @@ export default {
 		</video>
 	</div>
 </template>
-
 
 <style lang="scss" scoped>
 

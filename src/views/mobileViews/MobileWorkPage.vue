@@ -37,16 +37,12 @@ export default {
 		<div class="container">
 
 			<ImageOrVideo 
-				class="illustration-1" 
 				ref='illustration1' 
-				:src="`https://drive.google.com/uc?id=${work.illustrations[0].id}`"  
+				class="illustration-1" 
+				:src="work.illustrations[0].id"  
 				:alt="work.illustrations[0].alternative"
 				:type="work.illustrations[0].type"
 			/>
-
-<!-- 			<img class="illustration-1" ref='illustration1' 
-				:src="`https://drive.google.com/uc?id=${work.illustrations[0].id}`"  
-				:alt="work.illustrations[0].alternative"/> -->
 
 			<div class="about-my-work">
 				<ul class="about-list">
@@ -61,18 +57,21 @@ export default {
 					<li class="project">
 						<h3>Project</h3>
 						<div class="about-item">
-							<p> 
-								{{ work.description }} 
+							<p v-html="work.description"> 
 							</p>
 						</div>
 					</li>
 				</ul>
 			</div>
-			<img class="illustration-2" :src="`https://drive.google.com/uc?id=${work.illustrations[1].id}`" 
-						:alt="work.illustrations[1].alternative"/>
 
+			<ImageOrVideo 
+				class="illustration-2" 
+				ref='illustration2' 
+				:src="work.illustrations[1].id"  
+				:alt="work.illustrations[1].alternative"
+				:type="work.illustrations[1].type"
+			/>
 		</div>
-
 	</div>
 </template>
 
@@ -90,7 +89,7 @@ export default {
 	.illustration-1, .illustration-2 {
 		position: relative;
 		margin-top: $global-padding;
-		margin-left: $global-padding;
+		margin-right: -$global-padding;
 	}
 
 	.about-my-work {
