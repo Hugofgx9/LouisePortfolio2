@@ -16,7 +16,6 @@ export default class imgMenu {
 
 		hover.addEventListener("mouseenter",(ev) => {
 			this.showImg(imgContainer);
-			console.log(imgContainer);
 		});
 		hover.addEventListener("mouseleave",(ev) => {
 			this.hideImg(imgContainer);

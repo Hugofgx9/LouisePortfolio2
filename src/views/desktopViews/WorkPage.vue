@@ -1,11 +1,15 @@
 <script>
 import { mapState } from 'vuex';
+import ImageOrVideo from '@/components/ImageOrVideo.vue';
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default {
 	name: 'WorkPage',
+	components: {
+		ImageOrVideo
+	},
 	props: ['id'],
 	data() {
 		return {
@@ -31,7 +35,6 @@ export default {
 	computed:  {
 		...mapState(['works']),
 		work() {
-			//console.log(Object.entries(this.works).map(([key, value]) => ({key,value})));
 			return this.works[this.id];
 		}
 	},
@@ -46,11 +49,21 @@ export default {
 		<div class="container">
 
 			<div class="illustration-section">
-				<img class="illustration-1" ref='illustration1' 
-				:src="`https://drive.google.com/uc?id=${work.illustrations[1].id}`"  
-				:alt="work.illustrations[0].alternative"/>
-				<img class="illustration-2" :src="`https://drive.google.com/uc?id=${work.illustrations[1].id}`" 
-							:alt="work.illustrations[1].alternative"/>
+				<ImageOrVideo 
+					ref='illustration1' 
+					class="illustration-1" 
+					:src="work.illustrations[0].id"  
+					:alt="work.illustrations[0].alternative"
+					:type="work.illustrations[0].type"
+				/>
+
+				<ImageOrVideo 
+					class="illustration-2" 
+					ref='illustration2' 
+					:src="work.illustrations[1].id"  
+					:alt="work.illustrations[1].alternative"
+					:type="work.illustrations[1].type"
+				/>
 			</div>
 
 			<div class="about-my-work">
@@ -66,8 +79,7 @@ export default {
 					<li class="project">
 						<h3>Project</h3>
 						<div class="about-item">
-							<p> 
-								{{ work.description }} 
+							<p v-html="work.description"> 
 							</p>
 						</div>
 					</li>
@@ -76,8 +88,7 @@ export default {
 
 		</div>
 
-	</div>
-</template>
+	</div></template>
 
 <style lang='scss' scoped>
 

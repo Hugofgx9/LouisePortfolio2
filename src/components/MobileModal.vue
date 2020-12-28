@@ -20,6 +20,11 @@ export default {
 			],
 		}
 	},
+	methods: {
+		close () {
+			this.$emit('close');
+		},
+	}
 }
 	
 </script>
@@ -27,8 +32,8 @@ export default {
 <template>
 	<div id="modal-menu">
 		<ul>
-			<li v-for="link in links" :key="link.lib">
-				<oval-link :text="link.lib" :to="link.to" :myStyle="link.style"/>
+			<li v-for="link in links" :key="link.lib" @click="close">
+				<oval-link :text="link.lib" :to="link.to" :myStyle="link.style" />
 			</li>	
 		</ul>
 		
