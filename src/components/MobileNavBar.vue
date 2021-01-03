@@ -12,8 +12,14 @@ export default {
 		}
 	},
 	methods: {
-		toogleMenu() {
-			this.isMenuVisible = !this.isMenuVisible;
+		showMenu() {
+			this.isMenuVisible = true;
+		},
+		hideMenu() {
+			this.isMenuVisible = false;
+		},
+		menuEnter() {
+			this.$refs.modelMenu.enterAnimation();
 		},
 	},
 	computed: {
@@ -27,11 +33,14 @@ export default {
 
 <template>
 	<nav>
-		<button @click="toogleMenu">
+		<button @click="showMenu">
 			<span>Menu</span>
 		</button>
 
-		<mobile-modal v-show="isMenuVisible" @close="toogleMenu"/>
+		<transition 
+			v-on:enter='menuEnter'>
+			<mobile-modal v-show="isMenuVisible" @close="hideMenu" ref="modelMenu"/>
+		</transition>
 
 	</nav>
 	
@@ -50,6 +59,8 @@ nav{
 	background-color: white;
 	overflow: hidden;
 	border: 1px solid $primary-color;
+	font-family: 'Times New Roman';
+	font-style: italic;
 	text-align: right;
 	border-radius: 50%;
 	transition: all .1s ease;
@@ -65,7 +76,6 @@ nav{
 		height: 50px;
 
 		button{
-			color: red;
 			left: -90px;
 			height: 50px;
 			width: 195px;

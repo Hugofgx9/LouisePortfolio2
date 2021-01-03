@@ -1,11 +1,11 @@
 <script>
 import OvalLink from '@/components/OvalLink.vue';
-import InfiniteScroll from '@/components/InfiniteScroll.vue';
+import MobileWorkList from '@/components/MobileWorkList.vue';
 export default {
 	name: 'MobileHome',
 	components: {
 		OvalLink,
-		// InfiniteScroll,
+		MobileWorkList,
 	},
 	data() {
 		return {
@@ -14,6 +14,10 @@ export default {
 				height: 'max(10vw, 50px)',
 			}
 		}
+	},
+	mounted () {
+		//let div = document.querySelector('#home #works');
+		//div.scrollIntoView();
 	}
 }
 </script>
@@ -32,11 +36,11 @@ export default {
 				about <span class='italic-text'> Graphic Design </span> <br/>
 			</p>
 			<div class="button-container">
-				<oval-link class="view-my-work" text="View my work" to="/" :myStyle="this.ovalStyle"/>
+				<oval-link class="view-my-work" text="View my work" to="/home#works" color="black" :myStyle="this.ovalStyle"/>
 			</div>
 		</div>
 		<div id="works">
-			<!-- <InfiniteScroll/> -->
+			<MobileWorkList/>
 		</div>
 
 	</div>
@@ -70,7 +74,9 @@ export default {
 	}
 
 	#works {
-		height: 200px;
+		margin-top: 8vh;
+		margin-bottom: 8vh;
+		font-size: $big-font-mobile;
 	}
 }
 	

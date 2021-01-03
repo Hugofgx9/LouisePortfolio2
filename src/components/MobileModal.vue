@@ -1,5 +1,6 @@
 <script>
 import OvalLink from '@/components/OvalLink.vue';
+import {gsap, Power1}from 'gsap';
 
 export default {
 	name: 'MobileModal',
@@ -13,8 +14,8 @@ export default {
 				height: '7vh',
 			},
 			links: [
-				{ lib: 'Home', to: '/home', style: {width: '30vh',height: '7vh'}},
-				{ lib: 'Works', to: '/works', style: {width: '30vh',height: '7vh'}},
+				{ lib: 'Home', to: '/home#home', style: {width: '30vh',height: '7vh'}},
+				{ lib: 'Works', to: '/home#works', style: {width: '30vh',height: '7vh'}},
 				{ lib: 'About', to: '/about', style: {width: '30vh',height: '7vh'}},
 				{ lib: 'Contact', to: '/contact', style: {width: '30vh',height: '7vh'}},
 			],
@@ -24,6 +25,19 @@ export default {
 		close () {
 			this.$emit('close');
 		},
+		enterAnimation() {
+			let li = document.querySelector('#modal-menu li');
+			let height = li.getBoundingClientRect().height + parseFloat(window.getComputedStyle(li).marginBottom);
+
+			gsap.from('#modal-menu li', .4, {
+				opacity: 0,
+				y: - height,
+				ease: Power1.easeOut,
+				stagger: {
+					amount: .5,
+				},
+			});
+		}
 	}
 }
 	
@@ -57,6 +71,15 @@ export default {
 
 	li{
 		margin-bottom: 4vh;
+		position: relative;
+
+		@for $i from 1 through 4 {
+			&:nth-of-type(#{$i}) {
+				z-index: 4 - $i;
+			}
+		}
+
+
 	}
 }
 	
