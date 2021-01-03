@@ -59,6 +59,8 @@ nav{
 	background-color: white;
 	overflow: hidden;
 	border: 1px solid $primary-color;
+	font-family: 'Times New Roman';
+	font-style: italic;
 	text-align: right;
 	border-radius: 50%;
 	transition: all .1s ease;
