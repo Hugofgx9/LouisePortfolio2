@@ -1,5 +1,6 @@
 <script>
 import OvalLink from '@/components/OvalLink.vue';
+import {gsap, Power3}from 'gsap';
 
 export default {
 	name: 'MobileModal',
@@ -24,6 +25,18 @@ export default {
 		close () {
 			this.$emit('close');
 		},
+		enterAnimation() {
+			let li = document.querySelector('#modal-menu li');
+			let height = li.getBoundingClientRect().height + parseFloat(window.getComputedStyle(li).marginBottom);
+
+			gsap.from('#modal-menu li', .5, {
+				opacity: 0,
+				y: - height,
+				stagger: {
+					amount: .6,
+				},
+			});
+		}
 	}
 }
 	
@@ -57,6 +70,15 @@ export default {
 
 	li{
 		margin-bottom: 4vh;
+		position: relative;
+
+		@for $i from 1 through 4 {
+			&:nth-of-type(#{$i}) {
+				z-index: 4 - $i;
+			}
+		}
+
+
 	}
 }
 	
