@@ -5,10 +5,10 @@ const state = {
 		beeandflowers: {
 			title: 'Bee And Flowers',
 			illustrations: [
-				{id: '1fZROlC0S2kqRQKbrE14yO6CAyKEBPl6Z', alternative: '' ,type: 'image'},
-				{id: '1I6ssV9U7ek1e-3r6TPSXQAx83YTxn3zb', alternative: '' ,type: 'video'},
+				{id: '/media/IMAGE1/IMAGE1_BEEANDFLOWERS.jpg', alternative: '' ,type: 'image'},
+				{id: '/media/IMAGE2/IMAGE2_VIDEO_BEEANDFLOWERS.mp4', alternative: '' ,type: 'video'},
 			],
-			hover_img: {src: '1pGUybl7_HjNxkQDcmoGNdEuaeSuhVQMZ'},
+			hover_img: {src: '/media/PNG_MENU/PNG_MENU_BEE_AND_FLOWERS.png'},
 			software: ['Cinema 4D', 'Photoshop'],
 			description: 'Print et animation vidéo composée autour de la notion de point de vue et de déconstruction ',
 			type: 'animation',
@@ -17,22 +17,22 @@ const state = {
 		corona: {
 			title: 'Corona Virus',
 			illustrations: [
-				{id: '1ZIC3XTKtp8LQxszawPkeCSheGniTezcq', alternative: '' ,type: 'image'},
-				{id: '1X37oqWSEthvAxenUQ5eq1itdVBnGJBy2', alternative: '' ,type: 'video'},
+				{id: '/media/IMAGE1/IMAGE1_CORONA.png', alternative: '' ,type: 'image'},
+				{id: '/media/IMAGE2/IMAGE2_VIDEO_CORONA.mp4', alternative: '' ,type: 'video'},
 			],
-			hover_img: {src: '1SZAnCo2KtG8VxIn7C_my_sxQPwaEF1xW'},
+			hover_img: {src: '/media/PNG_MENU/PNG_MENU_CORONA.png'},
 			software: ['Cinema 4D', 'Photoshop'],
 			description: 'Série de deux prints et une animation sur le théme du COVID-19 lors du premier confinement en France',
 			type: 'print + animation',
 		},
 
-		marcelbrauer: {
-			title: 'Marcel Brauer',
+		marcelbreuer: {
+			title: 'Marcel Breuer',
 			illustrations: [
-				{id: '1sVFMQWM6X16N7if4iq73Y7KhNR999W59', alternative: '' ,type: 'image'},
-				{id: '1pY3E8PchZhrbDOUlf2Wxto8hqEqot4dS', alternative: '' ,type: 'image'},
+				{id: '/media/IMAGE1/IMAGE1_MARCELBREUER.jpg', alternative: '' ,type: 'image'},
+				{id: '/media/IMAGE2/IMAGE2_MARCELBREUER.jpg', alternative: '' ,type: 'image'},
 			],
-			hover_img: {src: '1FZEkq6-m7QMwlZYzgWrML1OVMSaIJTcm'},
+			hover_img: {src: '/media/PNG_MENU/PNG_MENU_MARCEL_BREUER.png'},
 			software: ['Indesign', 'Photoshop'],
 			description: 'Création d\'un petit livret autour du design et architecte Marcel Breuer. Livret composé de prints fait à partir de ses créations ainsi que de texte expliquant chacun de ses travaux',
 			type: 'book',
@@ -41,10 +41,10 @@ const state = {
 		ravingintheshower: {
 			title: 'Raving In The Shower',
 			illustrations: [
-				{id: '1BNXRAYgxNtMnbSKEhZxrFb2wVb5Dbeuj', alternative: '' ,type: 'image'},
-				{id: '1MEaJuMKbLMiWnM4NUi8c-f7gSAdWdPgD', alternative: '' ,type: 'video'},
+				{id: '/media/IMAGE1/IMAGE1_RAVINGINTHESHOWER.png', alternative: '' ,type: 'image'},
+				{id: '/media/IMAGE2/IMAGE2_VIDEO_RAVINGINTHESHOWER.mp4', alternative: '' ,type: 'video'},
 			],
-			hover_img: {src: '11CQNlHgx28jQOkWs6E0lcYRiy_fkGJ8h'},
+			hover_img: {src: '/media/PNG_MENU/PNG_MENU_RAVING_IN_THE_SHOWER.png'},
 			software: ['Cinema 4D', 'Photoshop'],
 			description: `
 				Cover et animation vidéo pour la sortie d'une track du duo BastonBstnBaston 
@@ -56,10 +56,10 @@ const state = {
 		greener: {
 			title: 'Greener',
 			illustrations: [
-				{id: '17gqo_JXmYeQw5mpV1Tzjca3mY73fZjPb', alternative: '' ,type: 'image'},
-				{id: '1XSm6Yw8YrHUk6ziYt-ss-1QRUoDDlSub', alternative: '' ,type: 'image'},
+				{id: '/media/IMAGE1/IMAGE1_GREENER.jpg', alternative: '' ,type: 'image'},
+				{id: '/media/IMAGE2/IMAGE2_GREENER.jpg', alternative: '' ,type: 'image'},
 			],
-			hover_img: {src: '1kGWZP9tW0uySyMw9uc8Qg3Af5YzEnupi'},
+			hover_img: {src: '/media/PNG_MENU/PNG_MENU_GREENER.png'},
 			software: ['Illustrator', 'Xd'],
 			description: `Création d'un site de coaching et d'accompagnement pour consommer mieux et plus responsable. Projet de création complet du choix du nom en passant par l'identité visuelle du site mais également son contenu rédactionnel`,
 			type: 'webdesign',
@@ -68,10 +68,10 @@ const state = {
 		ikea: {
 			title: 'Archetype',
 			illustrations: [
-				{id: '1lLtXLvJBEhzoe3iU7GYIYK4zQIJhabou', alternative: '' ,type: 'image'},
-				{id: '18piO2_rYFoOjSKCo_lK3YMShr_1B32Qf', alternative: '' ,type: 'image'},
+				{id: '/media/IMAGE1/IMAGE1_IKEA.jpg', alternative: '' ,type: 'image'},
+				{id: '/media/IMAGE2/IMAGE2_IKEA.jpg', alternative: '' ,type: 'image'},
 			],
-			hover_img: {src: '1qPaJWgMvRLUI48PKWBo2HAJh3u4vzzP6'},
+			hover_img: {src: '/media/PNG_MENU/PNG_MENU_IKEA.png'},
 			software: ['Photoshop'],
 			description: `Proposition d'une campagne print fictive pour IKEA axée autour des archétypes et de "Monsieur Madame tout le monde"`,
 			type: 'ikea',
@@ -80,10 +80,10 @@ const state = {
 		vanmoof: {
 			title: 'Vélo Boulot Dodo',
 			illustrations: [
-				{id: '1X0GPmV4pkOzDRReMEOTdAvVvdUv2wKKH', alternative: '' ,type: 'image'},
-				{id: '1Y64AS9ewIIT9q3M3MCC47YNKUstUqsXW', alternative: '' ,type: 'image'},
+				{id: '/media/IMAGE1/IMAGE1_VANMOOF.jpg', alternative: '' ,type: 'image'},
+				{id: '/media/IMAGE2/IMAGE2_VANMOOF.jpg', alternative: '' ,type: 'image'},
 			],
-			hover_img: {src: '1dKvoENm92QWkmYS895BGJxQHzz91ggRZ'},
+			hover_img: {src: '/media/PNG_MENU/PNG_MENU_VANMOOF.png'},
 			software: ['Illustrator', 'Photoshop'],
 			description: `Recommandation publicitaire pour la marque VanMoof axée autour de la déconstruction de la routine Métro Boulot Dodo pour en reconstruire une basée sur la liberté, l'autonomie et le gain de temps grâce au vélo
 				\n\n`,

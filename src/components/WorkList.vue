@@ -1,7 +1,7 @@
 <script>
 	import { mapState } from 'vuex';
 	import gsap from 'gsap';
-	import imgMenu from '@/myClass/imgMenu';
+	import imgMenu from '@/utils/imgMenu';
 
 	export default {
 		name: 'WorkList',
@@ -33,7 +33,7 @@
 				</router-link>
 				<div class="hover-img">
 					<div class="hover-img__inner">
-						<img :src="`https://drive.google.com/uc?id=${project.value.hover_img.src}`">
+						<img :src="`${project.value.hover_img.src}`">
 					</div>
 				</div>
 			</li>

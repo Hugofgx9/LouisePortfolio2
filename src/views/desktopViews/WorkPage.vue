@@ -13,12 +13,11 @@ export default {
 	props: ['id'],
 	data() {
 		return {
-			loaded: false,
-
 		}
 	},
 	mounted () { 
 		this.createAboutScroll();
+		this.loaded(this.$refs[this.work.title]);
 	},
 	methods: {
 		createAboutScroll() {

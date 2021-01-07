@@ -1,27 +1,9 @@
 <script>
 import gsap from 'gsap';
-import Splitting from "splitting";
-import SplitTextJS from 'split-text-js';
-import SplitText from '@/myClass/splitText';
 
 export default {
 	name: 'Home',
 	mounted () {
-
-		let split = new SplitText({target: '#home .paragraph-2'});
-		console.log(split);
-
-		gsap.from(split.chars, {
-			duration: 0.3, 
-			ease: "sine.inOut", 
-			yPercent: 30,
-			opacity: 0, 
-			stagger: 0.02,
-			// Remove the extra markup when it's done
-			onComplete: () => {
-				//split.reverse();
-			}
-		});
 	},
 	methods: {
 	},

@@ -1,5 +1,6 @@
 <script>
 import mqSlot from '@/components/mq-slot.vue';
+import Loader from '@/components/Loader.vue';
 import NavBar from '@/components/NavBar.vue';
 import MobileNavBar from '@/components/MobileNavBar.vue';
 
@@ -8,6 +9,7 @@ export default {
 		NavBar,
 		mqSlot,
 		MobileNavBar,
+		Loader,
 	},
 }
 
@@ -15,16 +17,17 @@ export default {
 
 <template>
 	<div id="app">
-		<mq-slot mq="lg" class="desktop">
-			<nav-bar />
-			<router-view :key="$route.path"/>
-		</mq-slot>
-		
-		<mq-slot mq="sm" class="mobile">
-			<mobile-nav-bar />
-			<router-view name="mobile"/>
-		</mq-slot>
-
+		<Loader>
+			<mq-slot mq="lg" class="desktop">
+				<nav-bar />
+				<router-view :key="$route.path"/>
+			</mq-slot>
+			
+			<mq-slot mq="sm" class="mobile">
+				<mobile-nav-bar />
+				<router-view name="mobile"/>
+			</mq-slot>
+		</Loader>
 	</div>
 </template>
 
