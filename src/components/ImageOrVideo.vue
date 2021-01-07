@@ -14,12 +14,12 @@ export default {
 	<div class='media'>
 		<img 
 			v-if="type == 'image'" 
-			:src="`https://drive.google.com/uc?id=${src}`"
+			:src="`${src}`"
 			:alt="alt"
 		/>
 		<video v-else-if="type == 'video'" autoplay loop muted >
 			<source 
-				:src="`https://drive.google.com/uc?export=download&id=${src}`"
+				:src="`${src}`"
 				:alt="alt"
 			/>
 		</video>

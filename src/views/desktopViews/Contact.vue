@@ -3,7 +3,7 @@ import gsap from 'gsap';
 
 export default {
 	name: 'Contact',
-	mounted: function () {
+	mounted() {
 	},
 	methods: {
 	}

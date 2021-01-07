@@ -1,6 +1,5 @@
 <script>
-import infiniteScroll from '@/myClass/infiniteScroll.js';
-import WorkPage from '@/views/desktopViews/WorkPage';
+import infiniteScroll from '@/utils/infiniteScroll.js';
 import WorkList from '@/components/WorkList';
 import { mapState } from 'vuex';
 import gsap from 'gsap';
@@ -8,12 +7,10 @@ import gsap from 'gsap';
 export default {
 	name: 'InfiniteScroll',
 	components: {
-		WorkPage,
 		WorkList
 	},
 	data () {
 		return {
-			loaded: false,
 			numberOfList: 1,
 			ContainerHeight: 0,
 			ContentHeight: 0,
@@ -21,7 +18,6 @@ export default {
 		}
 	},
 	mounted () {
-		this.loaded = true;
 		this.myScroll = new infiniteScroll(this.$refs['infinit-scroll'], 
 			this.$refs['infinit-scroll'].querySelector('ul'));
 
@@ -45,14 +41,7 @@ export default {
 <template>
 	<div ref="infinit-scroll" id='infinit-scroll' v-if="projects">
 		<WorkList ref="scroll-content" v-for="item in numberOfList" :key="item"/>
-
-		<!-- Use to prerender the items -->
-		<div v-if="!loaded" style="display: none;">
-			<WorkPage v-for="project in projects" :id="project.key" :key="project.key"/>
-		</div>
-
 	</div>
-	
 </template>
 
 <style lang='scss' scoped>
