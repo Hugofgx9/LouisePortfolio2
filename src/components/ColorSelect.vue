@@ -33,6 +33,6 @@ export default {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 8vw;
+	width: 5vw;
 }
 </style>

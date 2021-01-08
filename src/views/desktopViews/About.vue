@@ -1,12 +1,52 @@
 <script>
+import {gsap, Power1} from 'gsap';
+
 export default {
-  name: 'About',
+	name: 'About',
+	mounted() {
+		let tl = gsap.timeline();
+
+		tl.from('#about .paragraph-1', 1, {
+			opacity: 0,
+			ease: Power1.easeInOut,
+		})
+		.from('#about .cv-container h2', 1, {
+			opacity: 0,
+			ease: Power1.easeInOut,
+		}, '<0.3')
+		.from('#about .cv-container h2', 0.6, {
+			y: -10,
+			ease: Power1.easeInOut,
+		}, '<')
+		.from('#about .curriculum li', 0.6, {
+			opacity: 0,
+			ease: Power1.easeInOut,
+			stagger: {
+				each: 0.3,
+			}
+		}, '<0.3')		
+		.from('#about .studies li', 0.6, {
+			opacity: 0,
+			ease: Power1.easeInOut,
+			stagger: {
+				each: 0.3,
+			}
+		}, '<')
+		.from('#about .skills li', 0.6, {
+			opacity: 0,
+			ease: Power1.easeInOut,
+			stagger: {
+				each: 0.1,
+			}
+		}, '<');
+		
+	}
 }
 
 </script>
 
 <template>
-  <div id='about'>
+	<div id='about'>
 		<p class='paragraph-1'>
 			After having graduated from hight school in <span class='italic-text'> Management Science and Technology, </span> speciality <span class='italic-text'> Marketing </span> and <span class='italic-text'> Art </span> option with a <span class='italic-text'> "very good" </span> mention; I joined a <span class='italic-text'> school of Communication and Advertising </span> in Bordeaux 
 		</p>
@@ -56,7 +96,7 @@ export default {
 			
 		</div>
 
-  </div>
+	</div>
 </template>
 
 <style lang='scss' scoped>

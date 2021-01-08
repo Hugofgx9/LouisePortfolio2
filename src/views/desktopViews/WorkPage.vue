@@ -21,6 +21,7 @@ export default {
 	methods: {
 		createAboutScroll() {
 			ScrollTrigger.create({
+				//markers: true,
 				trigger:'.about-list',
 				start:'top top+=24px',
 				endTrigger: "about-my-work",

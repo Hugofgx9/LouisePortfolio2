@@ -58,7 +58,7 @@ export default {
 
 nav>ul {
 	display: grid;
-	grid-template-columns: 1fr 1fr repeat(3, 140px);
+	grid-template-columns: 140px 1fr repeat(3, 140px);
 	grid-template-rows: auto;
 	padding-bottom: 24px;
 	position: relative;

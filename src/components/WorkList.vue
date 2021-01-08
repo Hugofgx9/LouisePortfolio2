@@ -58,6 +58,7 @@
 
 				span.type-of-work {
 					margin-left: 100px;
+					color: var(--second-color);
 					opacity: 0;
 					text-transform: uppercase;
 				}
