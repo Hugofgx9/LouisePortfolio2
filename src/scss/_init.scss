@@ -42,12 +42,19 @@ button:focus {
   outline: 0;
 }
 
+:root {
+  --second-color: #{$second-color};
+}
+.blue {
+  --second-color: #1900FF;
+}
+
+.black {
+  --second-color: black;
+}
+
 .italic-text {
   font-family: 'Times New Roman';
   font-style: italic;
-  color: $second-color;
-}
-
-.blue {
-  color: blue;
+  color: var(--second-color);
 }

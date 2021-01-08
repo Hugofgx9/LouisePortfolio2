@@ -1,9 +1,18 @@
 <script>
-import gsap from 'gsap';
+import {gsap, Power1} from 'gsap';
 
 export default {
 	name: 'Home',
 	mounted () {
+		let tl = gsap.timeline();
+		tl.from('#home .paragraph-1', 0.8,{
+			opacity: 0,
+			ease: Power1.easeInOut,
+		})
+		.from('#home .paragraph-2', 1, {
+			opacity: 0,
+			ease: Power1.easeInOut,
+		}, '<0.5')
 	},
 	methods: {
 	},

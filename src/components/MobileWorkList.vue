@@ -53,7 +53,7 @@
 				}
 				
 				&:hover, &:hover span{
-					color: $second-color;
+					color: var(--second-color);
 				}
 			}
 		}

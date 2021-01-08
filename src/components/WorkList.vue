@@ -58,12 +58,13 @@
 
 				span.type-of-work {
 					margin-left: 100px;
+					color: var(--second-color);
 					opacity: 0;
 					text-transform: uppercase;
 				}
 				
 				&:hover, &:hover span{
-					color: $second-color;
+					color: var(--second-color);
 
 					&.type-of-work {
 						margin-left: 0;
