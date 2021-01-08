@@ -17,7 +17,6 @@ export default {
 	},
 	mounted () { 
 		this.createAboutScroll();
-		this.loaded(this.$refs[this.work.title]);
 	},
 	methods: {
 		createAboutScroll() {

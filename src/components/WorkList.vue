@@ -63,7 +63,7 @@
 				}
 				
 				&:hover, &:hover span{
-					color: $second-color;
+					color: var(--second-color);
 
 					&.type-of-work {
 						margin-left: 0;

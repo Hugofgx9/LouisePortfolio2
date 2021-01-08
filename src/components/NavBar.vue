@@ -1,16 +1,16 @@
 <script>
 import OvalLink from '@/components/OvalLink.vue';
 import gsap from 'gsap';
+import ColorSelect from '@/components/ColorSelect.vue';
 
 export default {
 	name: 'NavBar',
 	components: {
 		OvalLink,
+		ColorSelect
 	}, 
 	mounted () {
-
 		let navItem = document.querySelectorAll('nav ul li');
-
 
 		gsap.from(navItem, {
 			duration: 0.5, 
@@ -36,12 +36,15 @@ export default {
 				<OvalLink text='Home' to='/home'/>
 			</li>
 			<li class='second-column'>
+				<ColorSelect/>
+			</li>
+			<li class='third-column'>
 				<OvalLink text='Works' to='/works'/>
 			</li>
-			<li class='second-column'>
+			<li class='third-column'>
 				<OvalLink text='About' to='/about'/>
 			</li>
-			<li class='second-column'>
+			<li class='third-column'>
 				<OvalLink text='Contact' to='/contact'/>
 			</li>
 		</ul>
@@ -52,9 +55,10 @@ export default {
 <style lang='scss' scoped>
 
 
-ul {
+
+nav>ul {
 	display: grid;
-	grid-template-columns: 1fr repeat(3, 140px);
+	grid-template-columns: 1fr 1fr repeat(3, 140px);
 	grid-template-rows: auto;
 	padding-bottom: 24px;
 	position: relative;
@@ -64,11 +68,18 @@ ul {
 		grid-row: 1;
 
 		&.second-column {
+			//justify-self: center;
+			display: grid;
+
+		}
+
+		&.third-column {
 			justify-self: end;
 		}
 
 		a.router-link-active {
 		}
+
 	}
 }
 	
