@@ -1,23 +1,7 @@
 #app {
-//   // min-height: calc(100vh - $global-padding);
-   font-family: "GGX88 W01 Light";
-   font-size: 16px;
-   font-style: normal;
-   -webkit-font-smoothing: antialiased;
-   -moz-osx-font-smoothing: grayscale;
-
    position: relative;
    overflow: hidden;
    width: 100vw;
-
-   .desktop {
-    padding: $global-padding;
-   }
-
-   .mobile {
-    padding: $mobile-padding;
-
-   }
 }
 
 * {
@@ -27,34 +11,20 @@
   padding: 0;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 a{
   text-decoration: none;
-  color: $primary-color;
+  color: inherit;
 }
 
 button {
   border: none;
   background-color: transparent;
-  font-family: 'Times New Roman';
 }
 
 button:focus {
   outline: 0;
-}
-
-:root {
-  --second-color: #{$second-color};
-}
-.blue {
-  --second-color: #1900FF;
-}
-
-.black {
-  --second-color: black;
-}
-
-.italic-text {
-  font-family: 'Times New Roman';
-  font-style: italic;
-  color: var(--second-color);
 }

@@ -84,10 +84,9 @@ export default {
 					</li>
 				</ul>
 			</div>
-
 		</div>
-
-	</div></template>
+	</div>
+</template>
 
 <style lang='scss' scoped>
 
@@ -135,7 +134,6 @@ export default {
 				width: 100%;
 				height: auto;	
 			}
-
 		}
 	}
 }
