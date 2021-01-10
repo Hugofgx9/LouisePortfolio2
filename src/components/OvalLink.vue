@@ -1,7 +1,12 @@
+<template>
+	<router-link v-if="active" :class="[classScreen, colorClass, 'oval-link']" :to='to' :style="style"> {{ text }} </router-link>
+	<span v-else :class="[classScreen, colorClass, 'oval-link']" :style="style"> {{ text }} </span>
+</template>
+
+
 <script>
 export default {
 	name: 'OvalLink',
-
 	props: {
 		text: {
 			type: String,
@@ -18,14 +23,16 @@ export default {
 		myStyle: {
 			type: Object,
 		},
+		active: {
+			type: Boolean,
+			default: true,
+		}
 	},
-
 	data () {
 		return {
 			classScreen: 'lg'
 		}
 	},
-
 	methods: {
 		sortWidth: function () {
 			if ( this.$store.state.windowWidth > 700) {
@@ -54,17 +61,11 @@ export default {
 	//   	windowWidth: 1 }
 	// },
 }
-
 </script>
 
-<template>
-	<router-link :class="[classScreen, colorClass]" :to='to' :style="style">
-		{{ text }}
-	</router-link>
-</template>
 
 <style lang='scss' scoped>
-a {
+.oval-link {
 	height: 30px;
 	overflow: hidden;
 	border: 1px solid;
@@ -73,7 +74,7 @@ a {
 	justify-content: center;
 	align-items: center;
 	border-radius: 50%;
-	transition: all .1s ease;
+	transition: color .1s ease;
   font-family: 'Times New Roman';
   font-style: italic;
   font-size: 18px;

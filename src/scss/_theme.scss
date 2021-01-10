@@ -1,20 +1,19 @@
 #app {
-//   // min-height: calc(100vh - $global-padding);
-   font-family: "GGX88 W01 Light";
-   font-size: 16px;
-   font-style: normal;
-   -webkit-font-smoothing: antialiased;
-   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  font-family: "GGX88 W01 Light";
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
-   .desktop {
+  .desktop {
     padding: $global-padding;
-   }
+  }
 
-   .mobile {
+  .mobile {
     padding: $mobile-padding;
-   }
+  }
 }
-
 
 :root {
   --second-color: #{$second-color};
