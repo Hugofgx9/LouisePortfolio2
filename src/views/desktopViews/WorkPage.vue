@@ -24,25 +24,29 @@
 			</div>
 
 			<div class="about-my-work">
-				<ul class="about-list">
-					<li class="software">
-						<h3>Software</h3>
-						<ul class="about-item">
-							<li v-for="software in work.software" :key="software"> 
-								{{ software }}
-							</li>
-						</ul>
-					</li>
-					<li class="project">
-						<h3>Project</h3>
-						<div class="about-item">
-							<p v-html="work.description"> 
-							</p>
-						</div>
-					</li>
-				</ul>
+				<div class="about-list">
+					<ul>					
+						<li class="software">
+							<h3>Software</h3>
+							<ul class="about-item">
+								<li v-for="software in work.software" :key="software"> 
+									{{ software }}
+								</li>
+							</ul>
+						</li>
+						<li class="project">
+							<h3>Project</h3>
+							<div class="about-item">
+								<p v-html="work.description"> 
+								</p>
+							</div>
+						</li>
+					</ul>
+
+					<DraggableLink text="Next work" :to="nextProjectLink" color='black' class="button"/>
+
+				</div>
 			</div>
-			<DraggableLink text="next Work" :to="nextProjectLink" class="button"/>
 		</div>
 	</div>
 </template>
@@ -141,6 +145,20 @@ export default {
 				margin-top: 18px;
 				margin-bottom: 18px;
 			}
+
+			.button {
+				cursor: move;
+				//position: absolute;
+				//bottom: 20%;
+				//right: 20%;
+				z-index: 10;
+				margin-top: 30px;
+				//position: relative;
+				margin-left: -50px;	
+				right: 0;
+				width: 140px;
+				height: 37px;
+			}
 		}
 
 		.illustration-section {
@@ -159,15 +177,6 @@ export default {
 			}
 		}
 
-		.button {
-			cursor: move;
-			position: absolute;
-			bottom: 20%;
-			right: 20%;
-			z-index: 2;
-			width: 140px;
-			height: 37px;
-		}
 	}
 }
 
