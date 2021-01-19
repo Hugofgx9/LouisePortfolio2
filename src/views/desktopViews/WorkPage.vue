@@ -1,46 +1,4 @@
-<script>
-import { mapState } from 'vuex';
-import ImageOrVideo from '@/components/ImageOrVideo.vue';
-import gsap from 'gsap';
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
-
-export default {
-	name: 'WorkPage',
-	components: {
-		ImageOrVideo
-	},
-	props: ['id'],
-	data() {
-		return {
-		}
-	},
-	mounted () { 
-		this.createAboutScroll();
-	},
-	methods: {
-		createAboutScroll() {
-			ScrollTrigger.create({
-				//markers: true,
-				trigger:'.about-list',
-				start:'top top+=24px',
-				endTrigger: "about-my-work",
-				end: "bottom bottom",
-				pin: true,
-				scrub: 1,
-			});
-		},
-	},
-	computed:  {
-		...mapState(['works']),
-		work() {
-			return this.works[this.id];
-		}
-	},
-}
-</script>
-
-<template>
+ <template>
 	<div id="my-work" v-if="work">
 
 		<h2 class="italic-text"> {{ work.title }} </h2>
@@ -84,10 +42,73 @@ export default {
 					</li>
 				</ul>
 			</div>
-
+			<DraggableLink text="next Work" :to="nextProjectLink" class="button"/>
 		</div>
+	</div>
+</template>
 
-	</div></template>
+
+<script>
+import { mapState } from 'vuex';
+import ImageOrVideo from '@/components/ImageOrVideo.vue';
+import DraggableLink from '@/components/DraggableLink.vue';
+import gsap from 'gsap';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
+export default {
+	name: 'WorkPage',
+	components: {
+		ImageOrVideo,
+		DraggableLink
+	},
+	props: ['id'],
+	data() {
+		return {
+			nextProjectLink: '/works',
+		}
+	},
+	mounted () {
+		this.createAboutScroll();
+		this.nextProjectLink = `/work/${this.getNextProject()}`;
+
+	},
+	methods: {
+		createAboutScroll() {
+			ScrollTrigger.create({
+				//markers: true,
+				trigger:'.about-list',
+				start:'top top+=24px',
+				endTrigger: "about-my-work",
+				end: "bottom bottom",
+				pin: true,
+				scrub: 1,
+			});
+		},
+		getNextProject() {
+			let workIndex = this.projects.findIndex( o => o.value.title == this.work.title);
+			let nextProjectID;
+			if( workIndex == this.projects.length - 1) {
+				nextProjectID = this.projects[0].key;
+			}
+			else {
+				nextProjectID = this.projects[workIndex + 1].key;
+			}
+			return nextProjectID;
+		}
+	},
+	computed:  {
+		...mapState(['works']),
+		work() {
+			return this.works[this.id];
+		},
+		projects() {
+			return Object.entries(this.works).map(([key, value]) => ({key,value}));
+		},
+	},
+}
+</script>
+
 
 <style lang='scss' scoped>
 
@@ -104,6 +125,7 @@ export default {
 	.container {
 		display: grid;
 		grid-template-columns: 1fr 405px;
+		position: relative;
 
 		.about-my-work {
 			grid-column: 2;
@@ -135,7 +157,16 @@ export default {
 				width: 100%;
 				height: auto;	
 			}
+		}
 
+		.button {
+			cursor: move;
+			position: absolute;
+			bottom: 20%;
+			right: 20%;
+			z-index: 2;
+			width: 140px;
+			height: 37px;
 		}
 	}
 }

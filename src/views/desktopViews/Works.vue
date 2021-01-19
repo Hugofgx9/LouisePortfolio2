@@ -19,6 +19,7 @@ export default {
 
 #works{
 	height: calc(100vh - (32px + 3 * 24px));
+	max-height: 60vw;
 	font-size: $big-font-size;
 }
 	

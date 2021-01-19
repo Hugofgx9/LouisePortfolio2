@@ -1,0 +1,41 @@
+#app {
+  min-height: 100vh;
+  font-family: "GGX88 W01 Light";
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  .desktop {
+    padding: $global-padding;
+  }
+
+  .mobile {
+    padding: $mobile-padding;
+  }
+}
+
+:root {
+  --second-color: #{$second-color};
+}
+.blue {
+  --second-color: #1900FF;
+}
+
+.black {
+  --second-color: black;
+}
+
+.italic-text {
+  font-family: 'Times New Roman';
+  font-style: italic;
+  color: var(--second-color);
+}
+
+a {
+  color: $primary-color;
+}
+
+button {
+  font-family: 'Times New Roman';
+}
