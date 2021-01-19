@@ -1,6 +1,6 @@
 <template>
 	<router-link v-if="active" :class="[classScreen, colorClass, 'oval-link']" :to='to' :style="style"> {{ text }} </router-link>
-	<span v-else :class="[classScreen, colorClass, 'oval-link']" :style="style"> {{ text }} </span>
+	<span v-else :class="[classScreen, colorClass, 'oval-link']" :data-link='to' :style="style"> {{ text }} </span>
 </template>
 
 

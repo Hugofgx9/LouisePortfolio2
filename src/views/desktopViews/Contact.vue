@@ -24,7 +24,7 @@ export default {
 			</a>
 			and on Instagram :
 			<a href="https://www.instagram.com/louiseperedesfantozzi/" target="_blank">
-				<span class="italic-text">@louiseperedesfantozzi</span>
+				<span class="italic-text">@louise.fantozzi</span>
 			</a>
 		</p>
 

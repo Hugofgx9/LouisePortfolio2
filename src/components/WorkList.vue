@@ -1,30 +1,3 @@
-<script>
-	import { mapState } from 'vuex';
-	import gsap from 'gsap';
-	import imgMenu from '@/utils/imgMenu';
-
-	export default {
-		name: 'WorkList',
-		data () {
-			return {
-				loaded: false,
-			}
-		},
-		mounted () {
-			new imgMenu;
-		},
-		methods: {
-		},
-		computed: {
-			...mapState(['works']),
-			projects() {
-				return Object.entries(this.works).map(([key, value]) => ({key,value}));
-			},
-		}
-	}
-	
-</script>
-
 <template>
 		<ul class="infinit-scroll-single-list">
 			<li v-for="project in projects" :key="project.key">
@@ -40,6 +13,34 @@
 		</ul>
 </template>
 
+<script>
+import { mapState } from 'vuex';
+import gsap from 'gsap';
+import imgMenu from '@/utils/imgMenu';
+
+export default {
+	name: 'WorkList',
+	data () {
+		return {
+			loaded: false,
+		}
+	},
+	mounted () {
+		new imgMenu;
+	},
+	methods: {
+	},
+	computed: {
+		...mapState(['works']),
+		projects() {
+			return Object.entries(this.works).map(([key, value]) => ({key,value}));
+		},
+	}
+}
+	
+</script>
+
+
 <style lang="scss" scoped>
 
 	.infinit-scroll-single-list {
@@ -49,7 +50,9 @@
 				position: relative;
 				z-index: 5;
 				color: black;
-				transition: all .2s ease;
+				transition-property: color, opacity;
+				transition-duration: .2s ;
+				transition-timing-function: ease;
 
 				span.italic-text {
 					display: inline-block;

@@ -25,7 +25,7 @@ export default {
 			
 			<mq-slot mq="sm" class="mobile">
 				<mobile-nav-bar />
-				<router-view name="mobile"/>
+				<router-view name="mobile" :key="$route.path"/>
 			</mq-slot>
 		</Loader>
 	</div>

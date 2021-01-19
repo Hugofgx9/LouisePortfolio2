@@ -1,12 +1,14 @@
 <script>
-import OvalLink from '@/components/OvalLink.vue';
+//import OvalLink from '@/components/OvalLink.vue';
+import DraggableLink from '@/components/DraggableLink.vue';
 import { getTranslateValues } from '@/utils/getTranslateValues';
 import { gsap, Power1 } from "gsap";
 
 export default {
 	name: 'Home',
 	components: {
-		OvalLink,
+		//OvalLink,
+		DraggableLink,
 	},
 	data () {
 		return {
@@ -15,59 +17,8 @@ export default {
 	},
 	mounted () {
 		this.animation();
-		this.moveButton();
 	},
 	methods: {
-		moveButton() {
-			let isDown = false;
-			let startDate;
-			let btn = document.querySelector('#home .button');
-			let btnPos = btn.getBoundingClientRect();
-			let btnCenter = {
-				x: btnPos.x + (btnPos.width / 2),
-				y: btnPos.y + (btnPos.height / 2),
-			};
-
-			//actions
-			const resize = () => {
-				let transform = getTranslateValues(btn);
-
-				btnPos = btn.getBoundingClientRect();
-				btnCenter = {
-					x: btnPos.x + (btnPos.width / 2) - transform.x,
-					y: btnPos.y + (btnPos.height / 2) - transform.y,
-				};				
-			}
-			const mouseDown = () => {
-				isDown = true;
-				startDate = new Date();
-			}
-			const mouseUp = (ev) => {
-				ev.preventDefault();
-				let endDate = new Date();
-				let seconds = (endDate.getTime() - startDate.getTime()) / 1000;
-
-				if (seconds < 0.2) this.$router.push('/works').catch(err => {});
-
-				isDown = false;
-			}
-			const moveEvent = (ev) => {
-				ev.preventDefault();
-
-				gsap.set(btn, {
-					x: ev.clientX - btnCenter.x,
-					y: ev.clientY - btnCenter.y,
-				})
-			}
-
-			//bind events 
-			btn.addEventListener('mousedown', () => mouseDown() );
-			window.addEventListener('mouseup', (ev) => mouseUp(ev) );
-			window.addEventListener('resize', () => resize() );
-			//btn.addEventListener('mouseleave', () => mouseUp() );
-			window.addEventListener('mousemove', (ev) => isDown && moveEvent(ev), false);
-
-		},
 		animation(){
 			let tl = gsap.timeline();
 			tl.from('#home .paragraph-1', 0.8,{
@@ -96,7 +47,7 @@ export default {
 				speciality <span class='italic-text'>Advertising</span> and<br/>
 				I'm passionate about <span class='italic-text'>Graphic Design</span><br/>
 			</p>
-			<OvalLink :active="false" text="View my works" to="/works" color="black" class="button" />
+			<DraggableLink text="View my works" to="/works" color="black" class="button" />
 		</div>
 	</div>
 </template>
@@ -121,7 +72,7 @@ export default {
 		position: relative;
 
 		.button{
-			cursor: grabbing;
+			cursor: move;
 			position: absolute;
 			bottom: 0;
 			z-index: 2;
