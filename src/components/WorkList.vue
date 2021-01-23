@@ -6,7 +6,7 @@
 				</router-link>
 				<div class="hover-img">
 					<div class="hover-img__inner">
-						<img :src="`${project.value.hover_img.src}`">
+						<ImageOrVideo :src="project.value.hover_img.src" type="image" class="img" />
 					</div>
 				</div>
 			</li>
@@ -17,9 +17,13 @@
 import { mapState } from 'vuex';
 import gsap from 'gsap';
 import imgMenu from '@/utils/imgMenu';
+import ImageOrVideo from '@/components/ImageOrVideo.vue';
 
 export default {
 	name: 'WorkList',
+	components: {
+		ImageOrVideo,
+	},
 	data () {
 		return {
 			loaded: false,
@@ -90,7 +94,7 @@ export default {
 					overflow: hidden;
 
 
-					img {
+					.img {
 						width: 100%;
 						height: auto;
 						position: relative;
