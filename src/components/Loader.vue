@@ -11,13 +11,20 @@ export default {
 	},
 	data() {
 		return {
+			loaded: false,
 		}
 	},
 	mounted () {
-		//loader();
+		this.load();
 	},
 	methods: {
-		handlerLoaded() {
+		load() {
+			document.onreadystatechange = () => {
+				if (document.readyState == "complete") {
+					console.log('complete')
+					this.loaded = true;
+				}
+			}
 		}
 	},
 	computed: {
@@ -32,7 +39,7 @@ export default {
 <template>
 	<div class="loader">
 		<slot></slot>
-		<div class="preload" v-show="false" >
+		<div class="preload" v-show="false" v-if="!loaded" >
 			<WorkPage v-for="project in projects" :id="project.key" :key="project.key"/>
 		</div>
 	</div>

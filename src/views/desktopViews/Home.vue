@@ -1,7 +1,6 @@
 <script>
 //import OvalLink from '@/components/OvalLink.vue';
 import DraggableLink from '@/components/DraggableLink.vue';
-import { getTranslateValues } from '@/utils/getTranslateValues';
 import { gsap, Power1 } from "gsap";
 
 export default {
@@ -29,8 +28,7 @@ export default {
 				opacity: 0,
 				ease: Power1.easeInOut,
 			}, '<0.5')
-
-		}
+		},
 	},
 }
 </script>

@@ -1,11 +1,35 @@
 export default class splitText {
 	constructor (opt = {}) {
 		this.options = opt;
-		this.element = document.querySelector(this.options.target);
+
+		// what kind of element is pass ? 
+		if (typeof this.options.target === 'string' ) {
+			this.element = document.querySelector(this.options.target);
+		} else {
+			this.element = this.options.target;
+		}
+
+		// get the original content of element
 		this.defaultContent = this.element.innerHTML;
 
-		this.createLines();
-		//this.separateChars();
+		// which split ? default chars and lines
+		if (this.options.split) {
+			let splitOpts = this.options.split.split(',');
+			splitOpts.includes('chars') && this.separateChars();
+			splitOpts.includes('lines') && this.createLines();
+
+		}
+		else {
+			this.createLines();
+			this.separateChars();			
+		}
+
+		// turn 'overflow = hidden' for specific element, default none;
+		if (this.options.hide) {
+			let hideOpts = this.options.hide.split(',');
+			hideOpts.includes('chars') && this.hideElements('[data-split=char-wrapper]');
+			hideOpts.includes('lines') && this.hideElements('[data-split=line-wrapper]');
+		}
 	}
 
 	createDiv (text) {
@@ -18,33 +42,32 @@ export default class splitText {
 		return div;
 	}
 
-	copyTag (tag) {
-		//let tag = document.createElement();
-	}
-
 	separateChars() {
-		this.chars = new Array ();
 		let cloneNode = this.element.cloneNode(true);
 		cloneNode.innerHTML = '';
 
 		const ElementToDivs = (element, cloneWrapper) => {
 			cloneWrapper.innerHTML = '';
-			for (let i = 0; i < element.childNodes.length; i ++) {
-				let child = element.childNodes[i];
+
+			for (let child of element.childNodes ) {
 
 				if (child.nodeType == 3) {
 					let splittedText = child.textContent.split('');
 
 					splittedText.forEach(char => {
+						let divWrapper = this.createDiv('');
+						divWrapper.setAttribute('data-split', 'char-wrapper');
+						divWrapper.style.display = 'inline-block';
 						let div = this.createDiv(char);
 						div.setAttribute('data-split', 'char');
-						div.style.display = "inline-block";
+						div.style.display = 'inline-block';
 						div.style.whiteSpace = 'pre-wrap';
+
+						divWrapper.appendChild(div)
 
 						//ne prend pas en compte les espaces
 						//span.style.display = 'inline-block';
-						cloneWrapper.appendChild(div);
-						this.chars.push(div);
+						cloneWrapper.appendChild(divWrapper);
 					})
 				} 
 				//if child est un node
@@ -62,15 +85,12 @@ export default class splitText {
 
 
 		ElementToDivs(this.element, cloneNode);
-		//console.log(createLines(cloneNode.cloneNode(true)));
 		this.element.parentElement.replaceChild(cloneNode, this.element);
 		this.element = cloneNode;
-		//console.log(this.element);
 
 	}
 
 	createLines() {
-		this.lines = new Array();
 
 		let cloneNode = this.element.cloneNode(true);
 		cloneNode.innerHTML = '';
@@ -81,8 +101,7 @@ export default class splitText {
 
 		const ElementToLines = () => {
 			//remplace les nodes text par des node pour pouvoir accéder à leur hauteur
-			for (let i = 0; i < this.element.childNodes.length; i ++) {
-				let child = this.element.childNodes[i];
+			for (let child of this.element.childNodes) {
 
 				if (child.nodeType == 3) {
 					let div = this.createDiv(child.textContent);
@@ -90,10 +109,7 @@ export default class splitText {
 				}
 			}
 
-
-			for (let i = 0; i < this.element.childNodes.length; i ++) {
-				let child = this.element.childNodes[i];
-
+			for (let child of this.element.childNodes) {
 				//child is not a br
 				if (child.tagName !== 'BR') {
 					let tolerance = child.offsetHeight / 5;
@@ -106,13 +122,10 @@ export default class splitText {
 						top = child.offsetTop;
 						currentLine = this.createDiv('');
 						currentLine.setAttribute('data-split', 'line');
-						//currentLine.style.overflow = 'hidden';
-						currentLine.style.display = "inline";
-						this.lines.push(currentLine);
+						currentLine.style.display = "inline-block";
 
 						lineWrapper = this.createDiv('');
 						lineWrapper.setAttribute('data-split', 'line-wrapper');
-						lineWrapper.style.overflow = 'hidden';
 						lineWrapper.style.display = "block";
 
 						cloneNode.appendChild(lineWrapper);
@@ -127,13 +140,26 @@ export default class splitText {
 
 		this.element.parentElement.replaceChild(cloneNode,this.element);
 		this.element = cloneNode;
+	}
 
+	// overflow = 'hidden';
+	hideElements(selector) {
+		let elements = this.element.querySelectorAll(selector);
+
+		for (let element of elements) {
+			element.style.overflow = 'hidden';
+		}
 	}
 
 	reverse() {
 		this.element.innerHTML = this.defaultContent;
 	}
+
+	getChars() {
+		return this.element.querySelectorAll(`[data-split="char"]`);
+	}
+
+	getLines() {
+		return this.element.querySelectorAll(`[data-split="line"]`);
+	}
 }
-
-
-
