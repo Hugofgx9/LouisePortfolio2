@@ -16,22 +16,56 @@ export default {
 		// 	}
 		// }
 	},
+	methods: {
+		extension(filename) {
+			return filename.split('.').pop();
+		}
+	},
+	computed: {
+		webpImages() {
+			return this.type == 'image' 
+				? this.src.filter(i => this.extension(i) === 'webp')
+				: '';
+		},
+		classicImage() {
+			return this.type == 'image' 
+				? this.src.filter(i => this.extension(i) !== 'webp')
+				: '';
+		},
+
+	}
 };
 </script>
 
 <template>
 	<div ref='media' class='media'>
+
+		<picture v-if="type == 'image' && src.length > 1" :alt="alt">
+			<source 
+			v-for="img in webpImages" 
+			:key="img" 
+			:srcset="img" 
+			:type="`image/${ extension(img) }`">
+			<img 
+			v-for="img in classicImage" 
+			:key="img" 
+			:src="img" 
+			:type="extension(img)">
+		</picture>
+
 		<img 
-			v-if="type == 'image'" 
+			v-else-if="type == 'image' && src.length == 1" 
 			:src="`${src}`"
 			:alt="alt"
 		/>
+
 		<video v-else-if="type == 'video'" controls loop playsinline >
 			<source 
 				:src="`${src}`"
 				:alt="alt"
 			/>
 		</video>
+
 	</div>
 </template>
 
