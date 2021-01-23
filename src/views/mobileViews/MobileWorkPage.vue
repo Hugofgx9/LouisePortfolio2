@@ -1,5 +1,6 @@
 <script>
 import { mapState } from 'vuex';
+import DraggableLink from '@/components/DraggableLink.vue';
 import ImageOrVideo from '@/components/ImageOrVideo.vue';
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -8,7 +9,8 @@ gsap.registerPlugin(ScrollTrigger);
 export default {
 	name: 'MobileWorkPage',
 	components: {
-		ImageOrVideo
+		ImageOrVideo,
+		DraggableLink,
 	},
 	props: ['id'],
 	data() {
@@ -24,6 +26,18 @@ export default {
 		...mapState(['works']),
 		work() {
 			return this.works[this.id];
+		},
+		nextProject() {
+			let projects = Object.entries(this.works).map(([key, value]) => ({key,value}));
+			let workIndex = projects.findIndex( o => o.value.title == this.work.title);
+			let nextProjectID;
+			if( workIndex == projects.length - 1) {
+				nextProjectID = projects[0].key;
+			}
+			else {
+				nextProjectID = projects[workIndex + 1].key;
+			}
+			return `/work/${nextProjectID}`;
 		}
 	},
 }
@@ -31,6 +45,7 @@ export default {
 
 <template>
 	<div id="my-work" v-if="work">
+
 
 		<h2 class="italic-text"> {{ work.title }} </h2>
 
@@ -72,6 +87,11 @@ export default {
 				:type="work.illustrations[1].type"
 			/>
 		</div>
+
+		<div class="button-container">
+			<DraggableLink text="Next work" :to="nextProject" color='black' class="button"/>
+		</div>
+
 	</div>
 </template>
 
@@ -113,6 +133,27 @@ export default {
 		width: 100%;
 		height: auto;
 	}
+
+	.button-container{
+		display: grid;
+
+		.button{
+		margin-top: calc(#{$global-padding});
+		justify-self: end;
+		position: relative;
+		margin-right: -5vw;
+		right: 0;
+		height: 9vw;
+		width: 34vw;
+		z-index: 10;
+
+			@media only screen and (max-width: 510px) {
+				height: 45px;
+				width: 160px;
+			}
+		}
+	}
 }
+
 
 </style>

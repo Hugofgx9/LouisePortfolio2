@@ -1,5 +1,5 @@
 <template>
-	<OvalLink :active="false" :text="text" :to="to" :color="color" ref="draggableButton"/>
+	<OvalLink :active="false" :text="text" :to="to" :color="color" ref="draggableButton" class="drag-link"/>
 </template>
 
 <script>
@@ -48,4 +48,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.drag-link {
+	cursor: move;
+}
 </style>

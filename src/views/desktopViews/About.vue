@@ -1,54 +1,8 @@
-<script>
-import {gsap, Power1} from 'gsap';
-
-export default {
-	name: 'About',
-	mounted() {
-		let tl = gsap.timeline();
-
-		tl.from('#about .paragraph-1', 1, {
-			opacity: 0,
-			ease: Power1.easeInOut,
-		})
-		.from('#about .cv-container h2', 1, {
-			opacity: 0,
-			ease: Power1.easeInOut,
-		}, '<0.3')
-		.from('#about .cv-container h2', 0.6, {
-			y: -10,
-			ease: Power1.easeInOut,
-		}, '<')
-		.from('#about .curriculum li', 0.6, {
-			opacity: 0,
-			ease: Power1.easeInOut,
-			stagger: {
-				each: 0.3,
-			}
-		}, '<0.3')		
-		.from('#about .studies li', 0.6, {
-			opacity: 0,
-			ease: Power1.easeInOut,
-			stagger: {
-				each: 0.3,
-			}
-		}, '<')
-		.from('#about .skills li', 0.6, {
-			opacity: 0,
-			ease: Power1.easeInOut,
-			stagger: {
-				each: 0.1,
-			}
-		}, '<');
-		
-	}
-}
-
-</script>
-
 <template>
 	<div id='about'>
 		<p class='paragraph-1'>
 			After having graduated from hight school in <span class='italic-text'> Management Science and Technology, </span> speciality <span class='italic-text'> Marketing </span> and <span class='italic-text'> Art </span> option with a <span class='italic-text'> "very good" </span> mention; I joined a <span class='italic-text'> school of Communication and Advertising </span> in Bordeaux 
+			<DraggableLink text="Contact me" to="/contact" color="black" class="button" />
 		</p>
 		<div class="cv-container">
 			<ul>
@@ -91,13 +45,69 @@ export default {
 						<li><span>Advertising Strategy</span></li>
 					</ul>
 				</li>
-
-			</ul>
-			
+			</ul>		
 		</div>
 
 	</div>
 </template>
+
+<script>
+import {gsap, Power1} from 'gsap';
+import DraggableLink from '@/components/DraggableLink.vue';
+
+export default {
+	name: 'About',
+	components: {
+		DraggableLink
+	},
+	mounted() {
+		this.appear();
+		
+	},
+	methods: {
+		appear() {
+			let tl = gsap.timeline();
+
+			tl.from('#about .paragraph-1', 1, {
+				opacity: 0,
+				ease: Power1.easeInOut,
+			})
+			.from('#about .cv-container h2', 1, {
+				opacity: 0,
+				ease: Power1.easeInOut,
+			}, '<0.3')
+			.from('#about .cv-container h2', 0.6, {
+				y: -10,
+				ease: Power1.easeInOut,
+			}, '<')
+			.from('#about .curriculum li', 0.6, {
+				opacity: 0,
+				ease: Power1.easeInOut,
+				stagger: {
+					each: 0.3,
+				}
+			}, '<0.3')		
+			.from('#about .studies li', 0.6, {
+				opacity: 0,
+				ease: Power1.easeInOut,
+				stagger: {
+					each: 0.3,
+				}
+			}, '<')
+			.from('#about .skills li', 0.6, {
+				opacity: 0,
+				ease: Power1.easeInOut,
+				stagger: {
+					each: 0.1,
+				}
+			}, '<');
+
+		}
+	}
+}
+
+</script>
+
 
 <style lang='scss' scoped>
 
@@ -110,6 +120,17 @@ export default {
 	.paragraph-1 {
 		font-size: $big-font-size;
 		padding-right: 7vw;
+		position: relative;
+
+		.button{
+			cursor: move;
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			z-index: 2;
+			width: 160px;
+			height: 45px;
+		}
 	}
 
 	.cv-container {
@@ -184,6 +205,7 @@ export default {
 			}
 		}
 	}
+
 }
 	
 </style>
