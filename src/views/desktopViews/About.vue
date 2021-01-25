@@ -116,7 +116,7 @@ export default {
 	display: grid;
 	height: 80vh;
 	grid-template-columns: 1fr 405px;
-	// align-items: center;
+	align-items: center;
 	
 	.paragraph-1 {
 		font-size: $big-font-size;

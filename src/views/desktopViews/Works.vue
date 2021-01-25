@@ -19,8 +19,10 @@ export default {
 
 #works{
 	height: calc(100vh - (32px + 3 * 24px));
-	max-height: 60vw;
+	height: 80vh;
 	font-size: $big-font-size;
+	display: grid;
+	align-items: center;
 /* 	mask-image: linear-gradient(0deg, 
 		rgba(255,255,255,0) 0%, 
 		rgba(255,255,255,0.3) 3%, 

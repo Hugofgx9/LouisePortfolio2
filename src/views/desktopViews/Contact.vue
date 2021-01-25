@@ -72,6 +72,7 @@ export default {
 	font-size: $big-font-size;
 	display: grid;
 	height: 80vh;
+	align-items: center;
 
 	.paragraph-1 {
 		text-align: right;

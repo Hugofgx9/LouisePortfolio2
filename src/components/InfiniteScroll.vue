@@ -47,7 +47,7 @@ export default {
 <style lang='scss' scoped>
 
 #infinit-scroll {
-	height: 100%;
+	height: calc(38vw + (2 * #{$global-padding}));
 	overflow: scroll;
 
 	&::-webkit-scrollbar {
