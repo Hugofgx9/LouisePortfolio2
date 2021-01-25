@@ -2,7 +2,6 @@
 	<div id='about'>
 		<p class='paragraph-1'>
 			After having graduated from hight school in <span class='italic-text'> Management Science and Technology, </span> speciality <span class='italic-text'> Marketing </span> and <span class='italic-text'> Art </span> option with a <span class='italic-text'> "very good" </span> mention; I joined a <span class='italic-text'> school of Communication and Advertising </span> in Bordeaux 
-			<DraggableLink text="Contact me" to="/contact" color="black" class="button" />
 		</p>
 		<div class="cv-container">
 			<ul>
@@ -33,6 +32,8 @@
 							<span>BAC Science et Technologie du Management spécialité Marketing option Art</span>
 						</li>
 					</ul>
+					<DraggableLink text="Contact me" to="/contact" color="black" class="button" />
+
 				</li>
 				<li class='cv-section skills'>
 					<h2>Skills</h2>
@@ -113,24 +114,15 @@ export default {
 
 #about{
 	display: grid;
-	height: 100%;
+	height: 80vh;
 	grid-template-columns: 1fr 405px;
-	// align-items: center;
+	align-items: center;
 	
 	.paragraph-1 {
 		font-size: $big-font-size;
 		padding-right: 7vw;
 		position: relative;
 
-		.button{
-			cursor: move;
-			position: absolute;
-			left: 50%;
-			transform: translateX(-50%);
-			z-index: 2;
-			width: 160px;
-			height: 45px;
-		}
 	}
 
 	.cv-container {
@@ -143,6 +135,18 @@ export default {
 		}
 
 		li.cv-section {
+			position: relative;
+
+			.button{
+				cursor: move;
+				position: absolute;
+				right: 0;
+				transform: translate3d(-50%, 100%, 0);
+				bottom: 0;
+				z-index: 2;
+				width: 160px;
+				height: 45px;
+			}
 
 			&.curriculum, &.studies{
 				li {

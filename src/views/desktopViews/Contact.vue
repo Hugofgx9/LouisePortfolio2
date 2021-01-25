@@ -57,9 +57,17 @@ export default {
 			</p>
 			and on Instagram :
 			<p>
-				<a href="https://www.instagram.com/louiseperedesfantozzi/" target="_blank">
+				<a href="https://www.instagram.com/louise.fantozzi/" target="_blank">
 					<span class="italic-text">@louise.fantozzi</span>
 				</a>
+			</p>
+		</div>
+
+		<div class="paragraph-2">
+			<p>
+				This website was <span class="italic-text"> designed </span> by myself <br/>
+				and <span class="italic-text">developed </span> by <a class="italic-text" href="https://hugofaugeroux.com" target="_blank">Hugo Faugeroux</a>, web student. <br/>
+				Thanks for his work <span class="italic-text">:) </span>
 			</p>
 		</div>
 
@@ -69,16 +77,26 @@ export default {
 <style lang='scss' scoped>
 
 #contact{
-	font-size: $big-font-size;
 	display: grid;
-	height: 100%;
+	height: 80vh;
+	align-items: center;
 
 	.paragraph-1 {
-		text-align: right;
+		text-align: left;
+		font-size: calc( 0.8 * #{$big-font-size});
+
+		a {
+			line-height: calc( 0.6 * #{$big-font-size});
+		}
 
 		span {
 			display: inline-block;
 		}
+	}
+
+	.paragraph-2 {
+		text-align: right;
+		font-size: calc( 0.5 * #{$big-font-size});
 	}
 }
 	

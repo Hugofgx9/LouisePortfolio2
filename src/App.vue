@@ -3,6 +3,7 @@ import mqSlot from '@/components/mq-slot.vue';
 import Loader from '@/components/Loader.vue';
 import NavBar from '@/components/NavBar.vue';
 import MobileNavBar from '@/components/MobileNavBar.vue';
+import Date from '@/components/Date.vue';
 
 export default {
 	components: {
@@ -10,6 +11,7 @@ export default {
 		mqSlot,
 		MobileNavBar,
 		Loader,
+		Date,
 	},
 }
 
@@ -21,6 +23,7 @@ export default {
 			<mq-slot mq="lg" class="desktop">
 				<nav-bar />
 				<router-view :key="$route.path"/>
+				<Date/>
 			</mq-slot>
 			
 			<mq-slot mq="sm" class="mobile">
