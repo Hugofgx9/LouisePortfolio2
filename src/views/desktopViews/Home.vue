@@ -55,7 +55,7 @@ export default {
 #home{
 	font-size: $big-font-size;
 	display: grid;
-	height: 100%;
+	height: 80vh;
 	grid-template-rows: 1.1fr 1fr;
 	align-items: center;
 

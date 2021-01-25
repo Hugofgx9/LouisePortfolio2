@@ -71,7 +71,7 @@ export default {
 #contact{
 	font-size: $big-font-size;
 	display: grid;
-	height: 100%;
+	height: 80vh;
 
 	.paragraph-1 {
 		text-align: right;

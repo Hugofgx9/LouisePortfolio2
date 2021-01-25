@@ -17,6 +17,8 @@ export default {
 			condition: false,
 		}
 	},
+	mounted() {
+	},
 	created () {
 		this.updateWidth();
 		window.addEventListener( 'resize', () => {
@@ -26,11 +28,9 @@ export default {
 	methods: {
 		updateWidth () {
 				this.windowWidth = window.innerWidth;
-				//this.$store.commit('setWindowWidth')
-				//this.windowWidth = this.$store.state.windowWidth;
-				this.makeCondition();
+				this.checkWidth();
 		}, 
-		makeCondition () {
+		checkWidth () {
 			let index = this.breakpoints.findIndex(e => e.screenTyp === this.mq);
 			if (index == 0) {
 				this.condition = this.breakpoints[index].value > this.windowWidth;
