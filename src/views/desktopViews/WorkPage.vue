@@ -88,7 +88,7 @@ export default {
 				//markers: true,
 				trigger:'.about-list',
 				start:'top top+=24px',
-				endTrigger: "about-my-work",
+				endTrigger: ".about-my-work",
 				end: "bottom bottom",
 				pin: true,
 				scrub: 1,
