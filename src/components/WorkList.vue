@@ -2,7 +2,7 @@
 		<ul class="infinit-scroll-single-list">
 			<li v-for="project in projects" :key="project.key">
 				<router-link :to="`work/${project.key}`">
-					<span class='italic-text'> {{ project.value.title }} </span><span class="type-of-work"> - {{ project.value.type }} </span>
+					<span class='italic-text'> {{ project.value.title }} </span><span class="domain-of-work"> - {{ project.value.domain }} </span>
 				</router-link>
 				<div class="hover-img">
 					<div class="hover-img__inner">
@@ -63,7 +63,7 @@ export default {
 					padding-bottom: 0.8vw;
 				}
 
-				span.type-of-work {
+				span.domain-of-work {
 					margin-left: 100px;
 					color: var(--second-color);
 					opacity: 0;
@@ -73,7 +73,7 @@ export default {
 				&:hover, &:hover span{
 					color: var(--second-color);
 
-					&.type-of-work {
+					&.domain-of-work {
 						margin-left: 0;
 						opacity: 1;
 					}

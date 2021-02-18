@@ -12,8 +12,8 @@ export default {
 
 	data() {
 		return {
-			year: null,
-			month: null,
+			year: 0,
+			month: '',
 		};
 	},
 	mounted() {

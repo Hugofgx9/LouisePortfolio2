@@ -27,7 +27,7 @@
 			<li v-for="project in projects" :key="project.key">
 				<router-link :to="`work/${project.key}`">
 					<span class='italic-text'> {{ project.value.title }} </span>
-					<span class="type-of-work"> - {{ project.value.type }} </span>
+					<span class="domain-of-work"> - {{ project.value.domain }} </span>
 				</router-link>
 			</li>
 		</ul>
@@ -48,7 +48,7 @@
 					padding-bottom: 0.8vw;
 				}
 
-				span.type-of-work {
+				span.domain-of-work {
 					text-transform: uppercase;
 				}
 				

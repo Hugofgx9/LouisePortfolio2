@@ -1,7 +1,12 @@
  <template>
 	<div id="my-work" v-if="work">
 
-		<h2 class="italic-text"> {{ work.title }} </h2>
+		<div class="title-section">
+			<h1 class="italic-text"> {{ work.title }} </h1>
+			<p> [{{ work.type }} project] </p>
+
+		</div>
+
 
 		<div class="container">
 
@@ -27,7 +32,7 @@
 				<div class="about-list">
 					<ul>					
 						<li class="software">
-							<h3>Software</h3>
+							<h2>Software</h2>
 							<ul class="about-item">
 								<li v-for="software in work.software" :key="software"> 
 									{{ software }}
@@ -35,7 +40,7 @@
 							</ul>
 						</li>
 						<li class="project">
-							<h3>Project</h3>
+							<h2>Project</h2>
 							<div class="about-item">
 								<p v-html="work.description"> 
 								</p>
@@ -119,11 +124,21 @@ export default {
 #my-work {
 	margin-top: $global-padding;
 
-	h2 {
+	.title-section {
+		display: flex;
+		justify-content: space-between;
 		margin-bottom: $global-padding;
-		font-size: $big-font-size;
-		color: $primary-color;
-		font-weight: normal;
+		align-items: center;
+
+		h1{
+			font-size: $big-font-size;
+			color: $primary-color;
+			font-weight: normal;
+		}
+
+		p {
+			vertical-align: center;
+		}
 	}
 
 	.container {
@@ -134,7 +149,7 @@ export default {
 		.about-my-work {
 			grid-column: 2;
 
-			h3 {
+			h2 {
 				font-weight: normal;
 				border-bottom: solid 1px #111111;
 				font-size: 2em;
