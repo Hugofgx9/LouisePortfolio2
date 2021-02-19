@@ -170,7 +170,7 @@ const state = {
 			type: 'school',
 		},
 
-		ikea: {
+		/*ikea: {
 			title: 'Archetype',
 			illustrations: [
 				{
@@ -203,9 +203,9 @@ const state = {
 			domain: 'ikea',
 			type: 'school',
 		},
-
+*/
 		vanmoof: {
-			title: 'Vélo Boulot Dodo',
+			title: 'VanMoof',
 			illustrations: [
 				{
 					id: [
@@ -252,7 +252,7 @@ const state = {
 				Voir le pdf de présentation
 				</a>
 				\n\n`,
-			domain: 'vanmoof',
+			domain: 'advertising',
 			type: 'school',
 		},
 
@@ -341,7 +341,7 @@ const state = {
 				<iframe width="100%" height="120" scrolling="no" frameborder="no"
 				allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/973810585%3Fsecret_token%3Ds-UXk8jM0wXYX&color=%233d4083&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/louise-peredes-fantozzi" title="Louise PEREDES FANTOZZI" target="_blank" style="color: #cccccc; text-decoration: none;">Louise PEREDES FANTOZZI</a> · <a href="https://soundcloud.com/louise-peredes-fantozzi/maquette-spot-radio-reco-boursorama-banque/s-UXk8jM0wXYX" title="Maquette spot radio reco Boursorama Banque" target="_blank" style="color: #cccccc; text-decoration: none;">Maquette spot radio reco Boursorama Banque</a></div>
 				`,
-			domain: 'typo',
+			domain: 'advertising',
 			type: 'school',
 		},
 	},

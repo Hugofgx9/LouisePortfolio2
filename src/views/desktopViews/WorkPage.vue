@@ -80,6 +80,7 @@ export default {
 	mounted () {
 		this.createAboutScroll();
 		this.nextProjectLink = `/work/${this.getNextProject()}`;
+		this.refreshScrollTrigger();
 
 	},
 	methods: {
@@ -104,6 +105,13 @@ export default {
 				nextProjectID = this.projects[workIndex + 1].key;
 			}
 			return nextProjectID;
+		},
+		refreshScrollTrigger(){
+			document.onreadystatechange = () => {
+				if (document.readyState == "complete") {
+					ScrollTrigger.refresh();
+				}
+			}
 		}
 	},
 	computed:  {
