@@ -333,7 +333,7 @@ const state = {
 				de tickets à gratter distribués dans les grandes rues commerçantes, 
 				d'un spot radio et d'un film publicitaire diffusé en télévision. <br/><br/>
 
-				<a class="italic-text" href='/media/PDF/LOUISE_DIAPO_VANMOOF.pdf'> 
+				<a class="italic-text" href='/media/PDF/LOUISE_DIAPO_BOURSORAMA.pdf'> 
 				Voir le pdf de présentation
 				</a>
 				<br/>
