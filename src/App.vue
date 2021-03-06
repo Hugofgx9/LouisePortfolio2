@@ -4,6 +4,7 @@ import Loader from '@/components/Loader.vue';
 import NavBar from '@/components/NavBar.vue';
 import MobileNavBar from '@/components/MobileNavBar.vue';
 import Date from '@/components/Date.vue';
+import gsap from 'gsap';
 
 export default {
 	components: {
@@ -13,6 +14,25 @@ export default {
 		Loader,
 		Date,
 	},
+	methods: {
+		enter: function (el, done) {
+			gsap.from(el, {
+				opacity: 0,
+				duration: 0.7,
+				ease: 'power2.inOut'
+			})
+			done()
+		},
+		leave: function (el, done) {
+			gsap.to(el, {
+				opacity: 0,
+				duration: 1,
+				ease: 'power2.inOut'
+			})
+			done()
+		}
+
+	}
 }
 
 </script>
@@ -22,13 +42,18 @@ export default {
 		<Loader>
 			<mq-slot mq="lg" class="desktop">
 				<nav-bar />
-				<router-view :key="$route.path"/>
+				<transition
+					v-on:leave="leave" 
+					v-on:enter="enter" 
+				>
+					<router-view :key="$route.path"/>
+				</transition>
 				<Date/>
 			</mq-slot>
 			
 			<mq-slot mq="sm" class="mobile">
 				<mobile-nav-bar />
-				<router-view name="mobile" :key="$route.path"/>
+					<router-view name="mobile" :key="$route.path"/>
 			</mq-slot>
 		</Loader>
 	</div>
