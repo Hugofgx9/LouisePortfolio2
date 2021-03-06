@@ -14,6 +14,13 @@ export default {
 		Loader,
 		Date,
 	},
+
+	data () {
+		return {
+			appAlreadyOpen: false,
+		}
+	},
+
 	methods: {
 		enter: function (el, done) {
 			gsap.from(el, {
@@ -32,14 +39,20 @@ export default {
 			done()
 		}
 
-	}
+	},
+
+	mounted() {
+		setTimeout(() => {
+			this.appAlreadyOpen = true
+		}, 1000);
+	},
 }
 
 </script>
 
 <template>
 	<div id="app">
-		<Loader>
+		<loader :isAppMounted='appAlreadyOpen' >
 			<mq-slot mq="lg" class="desktop">
 				<nav-bar />
 				<transition
@@ -48,14 +61,14 @@ export default {
 				>
 					<router-view :key="$route.path"/>
 				</transition>
-				<Date/>
+				<date/>
 			</mq-slot>
 			
 			<mq-slot mq="sm" class="mobile">
 				<mobile-nav-bar />
 					<router-view name="mobile" :key="$route.path"/>
 			</mq-slot>
-		</Loader>
+		</loader>
 	</div>
 </template>
 

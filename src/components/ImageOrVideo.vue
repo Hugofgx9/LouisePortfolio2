@@ -59,7 +59,7 @@ export default {
 			:alt="alt"
 		/>
 
-		<video v-else-if="type == 'video'" controls loop playsinline >
+		<video v-else-if="type == 'video'" controls loop playsinline preload >
 			<source 
 				:src="`${src}`"
 				:alt="alt"
