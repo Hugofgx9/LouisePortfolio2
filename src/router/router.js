@@ -15,7 +15,7 @@ const routes = [
 	{
 		path: '/works',
 		components: {
-			default : () => import('@/views/desktopViews/Works.vue'),
+			default: () => import('@/views/desktopViews/Works.vue'),
 		},
 		//if mobile
 		//redirect : '/home',
